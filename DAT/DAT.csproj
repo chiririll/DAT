@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drawers\VirtualMemoryDrawer.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MemoryViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,9 +61,16 @@
       <DependentUpon>MemoryViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Memory.cs" />
+    <Compile Include="Model\PagedMemory.cs" />
     <Compile Include="Model\VirtualMemory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\MainForm.en-US.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryViewForm.resx">
       <DependentUpon>MemoryViewForm.cs</DependentUpon>
     </EmbeddedResource>

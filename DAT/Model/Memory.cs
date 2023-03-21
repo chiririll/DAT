@@ -1,7 +1,12 @@
-﻿namespace DAT.Model
+﻿using System;
+
+namespace DAT.Model
 {
-    internal class Memory
+    public abstract class Memory
     {
-        private int size;
+        public uint TranslateAddress()
+        {
+            return default;
+        }
     }
 }
