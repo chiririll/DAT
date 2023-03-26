@@ -5,13 +5,13 @@ namespace DAT.Model
 {
     public class PagedMemory
     {
-        private readonly int pageSize;
-        private readonly int framesCount;
-        private readonly int memorySize;
+        private readonly int pageSize = 9;
+        private readonly int framesCount = 32;
+        private readonly int memorySize = 5000000;
 
-        private readonly List<Page> pages;
-        private readonly List<Page> primary;
-        private readonly List<Page> secondary;
+        private readonly List<Page> pages = new List<Page>();
+        private readonly List<Page> primary = new List<Page>();
+        private readonly List<Page> secondary = new List<Page>();
 
         public IReadOnlyList<Page> Pages => pages;
         public IReadOnlyList<Page> Primary => primary;
@@ -19,7 +19,7 @@ namespace DAT.Model
 
         public void AddPage(Page page)
         {
-            if (!pages.Contains(page))
+            if (pages.Contains(page))
             {
                 throw new System.ArgumentException("Page already exists!");
             }

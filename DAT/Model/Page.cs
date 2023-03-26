@@ -4,6 +4,18 @@
     {
         public Id Id { get; }
 
+        public Page(bool inPrimary, int address = -1, int frame = -1)
+        {
+            if (inPrimary)
+            {
+                Load(frame);
+            }
+            else
+            {
+                Unload(frame);
+            }
+        }
+
         public bool InPrimary { get; private set; } = false;
         public int Address { get; private set; } = -1;
         public int Frame { get; private set; } = -1;

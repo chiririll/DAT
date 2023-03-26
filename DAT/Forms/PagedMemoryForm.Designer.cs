@@ -28,94 +28,183 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.pageSize = new System.Windows.Forms.NumericUpDown();
+            this.framesCount = new System.Windows.Forms.NumericUpDown();
+            this.memorySize = new System.Windows.Forms.NumericUpDown();
+            this.pageSizeLabel = new System.Windows.Forms.Label();
+            this.framesCountLabel = new System.Windows.Forms.Label();
+            this.memorySizeLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            this.addPageLabel = new System.Windows.Forms.Label();
+            this.newPageInPrimary = new System.Windows.Forms.CheckBox();
+            this.newPageAddr = new System.Windows.Forms.NumericUpDown();
+            this.newPageFrame = new System.Windows.Forms.NumericUpDown();
+            this.newPageAddrLabel = new System.Windows.Forms.Label();
+            this.newPageFrameLabel = new System.Windows.Forms.Label();
+            this.addPageButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pageSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.framesCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memorySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newPageAddr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newPageFrame)).BeginInit();
             this.SuspendLayout();
             // 
-            // numericUpDown1
+            // pageSize
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(166, 26);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 0;
+            this.pageSize.Location = new System.Drawing.Point(124, 21);
+            this.pageSize.Margin = new System.Windows.Forms.Padding(2);
+            this.pageSize.Name = "pageSize";
+            this.pageSize.Size = new System.Drawing.Size(90, 20);
+            this.pageSize.TabIndex = 0;
             // 
-            // numericUpDown2
+            // framesCount
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(166, 57);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown2.TabIndex = 1;
+            this.framesCount.Location = new System.Drawing.Point(124, 46);
+            this.framesCount.Margin = new System.Windows.Forms.Padding(2);
+            this.framesCount.Name = "framesCount";
+            this.framesCount.Size = new System.Drawing.Size(90, 20);
+            this.framesCount.TabIndex = 1;
             // 
-            // numericUpDown3
+            // memorySize
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(166, 85);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown3.TabIndex = 2;
+            this.memorySize.Location = new System.Drawing.Point(124, 69);
+            this.memorySize.Margin = new System.Windows.Forms.Padding(2);
+            this.memorySize.Name = "memorySize";
+            this.memorySize.Size = new System.Drawing.Size(90, 20);
+            this.memorySize.TabIndex = 2;
             // 
-            // label1
+            // pageSizeLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Размер страницы";
+            this.pageSizeLabel.AutoSize = true;
+            this.pageSizeLabel.Location = new System.Drawing.Point(9, 23);
+            this.pageSizeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pageSizeLabel.Name = "pageSizeLabel";
+            this.pageSizeLabel.Size = new System.Drawing.Size(98, 13);
+            this.pageSizeLabel.TabIndex = 3;
+            this.pageSizeLabel.Text = "Размер страницы";
             // 
-            // label2
+            // framesCountLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Количество фреймов";
+            this.framesCountLabel.AutoSize = true;
+            this.framesCountLabel.Location = new System.Drawing.Point(9, 48);
+            this.framesCountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.framesCountLabel.Name = "framesCountLabel";
+            this.framesCountLabel.Size = new System.Drawing.Size(105, 13);
+            this.framesCountLabel.TabIndex = 4;
+            this.framesCountLabel.Text = "Количество кадров";
             // 
-            // label3
+            // memorySizeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Объем памяти";
+            this.memorySizeLabel.AutoSize = true;
+            this.memorySizeLabel.Location = new System.Drawing.Point(9, 71);
+            this.memorySizeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.memorySizeLabel.Name = "memorySizeLabel";
+            this.memorySizeLabel.Size = new System.Drawing.Size(82, 13);
+            this.memorySizeLabel.TabIndex = 5;
+            this.memorySizeLabel.Text = "Объем памяти";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(292, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(219, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(496, 426);
+            this.pictureBox1.Size = new System.Drawing.Size(372, 346);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawMemory);
             // 
-            // PagedMemory
+            // addPageLabel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.addPageLabel.AutoSize = true;
+            this.addPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPageLabel.Location = new System.Drawing.Point(11, 114);
+            this.addPageLabel.Name = "addPageLabel";
+            this.addPageLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.addPageLabel.Size = new System.Drawing.Size(106, 13);
+            this.addPageLabel.TabIndex = 7;
+            this.addPageLabel.Text = "Добавить страницу";
+            // 
+            // newPageInPrimary
+            // 
+            this.newPageInPrimary.AutoSize = true;
+            this.newPageInPrimary.Location = new System.Drawing.Point(12, 139);
+            this.newPageInPrimary.Name = "newPageInPrimary";
+            this.newPageInPrimary.Size = new System.Drawing.Size(129, 17);
+            this.newPageInPrimary.TabIndex = 8;
+            this.newPageInPrimary.Text = "В первичной памяти";
+            this.newPageInPrimary.UseVisualStyleBackColor = true;
+            // 
+            // newPageAddr
+            // 
+            this.newPageAddr.Location = new System.Drawing.Point(124, 162);
+            this.newPageAddr.Name = "newPageAddr";
+            this.newPageAddr.Size = new System.Drawing.Size(90, 20);
+            this.newPageAddr.TabIndex = 9;
+            // 
+            // newPageFrame
+            // 
+            this.newPageFrame.Location = new System.Drawing.Point(124, 186);
+            this.newPageFrame.Name = "newPageFrame";
+            this.newPageFrame.Size = new System.Drawing.Size(90, 20);
+            this.newPageFrame.TabIndex = 10;
+            // 
+            // newPageAddrLabel
+            // 
+            this.newPageAddrLabel.AutoSize = true;
+            this.newPageAddrLabel.Location = new System.Drawing.Point(8, 164);
+            this.newPageAddrLabel.Name = "newPageAddrLabel";
+            this.newPageAddrLabel.Size = new System.Drawing.Size(38, 13);
+            this.newPageAddrLabel.TabIndex = 11;
+            this.newPageAddrLabel.Text = "Адрес";
+            // 
+            // newPageFrameLabel
+            // 
+            this.newPageFrameLabel.AutoSize = true;
+            this.newPageFrameLabel.Location = new System.Drawing.Point(9, 188);
+            this.newPageFrameLabel.Name = "newPageFrameLabel";
+            this.newPageFrameLabel.Size = new System.Drawing.Size(74, 13);
+            this.newPageFrameLabel.TabIndex = 12;
+            this.newPageFrameLabel.Text = "Номер кадра";
+            // 
+            // addPageButton
+            // 
+            this.addPageButton.Location = new System.Drawing.Point(12, 212);
+            this.addPageButton.Name = "addPageButton";
+            this.addPageButton.Size = new System.Drawing.Size(202, 23);
+            this.addPageButton.TabIndex = 13;
+            this.addPageButton.Text = "Добавить";
+            this.addPageButton.UseVisualStyleBackColor = true;
+            this.addPageButton.Click += new System.EventHandler(this.AddPage);
+            // 
+            // PagedMemoryForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.addPageButton);
+            this.Controls.Add(this.newPageFrameLabel);
+            this.Controls.Add(this.newPageAddrLabel);
+            this.Controls.Add(this.newPageFrame);
+            this.Controls.Add(this.newPageAddr);
+            this.Controls.Add(this.newPageInPrimary);
+            this.Controls.Add(this.addPageLabel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Name = "PagedMemory";
+            this.Controls.Add(this.memorySizeLabel);
+            this.Controls.Add(this.framesCountLabel);
+            this.Controls.Add(this.pageSizeLabel);
+            this.Controls.Add(this.memorySize);
+            this.Controls.Add(this.framesCount);
+            this.Controls.Add(this.pageSize);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "PagedMemoryForm";
             this.Text = "PagedMemory";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pageSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.framesCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memorySize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newPageAddr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newPageFrame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,12 +212,19 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown pageSize;
+        private System.Windows.Forms.NumericUpDown framesCount;
+        private System.Windows.Forms.NumericUpDown memorySize;
+        private System.Windows.Forms.Label pageSizeLabel;
+        private System.Windows.Forms.Label framesCountLabel;
+        private System.Windows.Forms.Label memorySizeLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label addPageLabel;
+        private System.Windows.Forms.CheckBox newPageInPrimary;
+        private System.Windows.Forms.NumericUpDown newPageAddr;
+        private System.Windows.Forms.NumericUpDown newPageFrame;
+        private System.Windows.Forms.Label newPageAddrLabel;
+        private System.Windows.Forms.Label newPageFrameLabel;
+        private System.Windows.Forms.Button addPageButton;
     }
 }

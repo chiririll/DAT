@@ -1,62 +1,44 @@
-﻿using System.Drawing;
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using DAT.View;
+using DAT.Model;
+using System.Drawing;
 
 namespace DAT.Forms
 {
     public partial class PagedMemoryForm : Form
     {
+        private PagedMemory memory;
+        private PagedMemoryView memView;
+
         public PagedMemoryForm()
         {
+            memory = new PagedMemory();
+            memView = new PagedMemoryView(memory);
+
             InitializeComponent();
         }
 
         private void DrawMemory(object sender, PaintEventArgs e)
         {
-            var gfx = e.Graphics;
+            e.Graphics.Clear(Color.White);
 
-            var offset = new Point(10, 10);
-
-            var outlineColor = Pens.LightGray;
-
-            DrawVirtualMemory(gfx, outlineColor, offset, new Size(32, 32), 254, 8);
+            memView.Draw(e.Graphics);
         }
 
-        private void DrawVirtualMemory(Graphics gfx, Pen color, Point pos, Size cellSize, int cellsCount, int cellsInRow)
+        private void AddPage(object sender, System.EventArgs e)
         {
-            var rowsCount = (int)Math.Floor((float)cellsCount / cellsInRow);
+            var page = new Page(newPageInPrimary.Checked, (int)newPageAddr.Value, (int)newPageFrame.Value);
 
-            var rectSize = new Size(cellsInRow * cellSize.Width, rowsCount * cellSize.Height);
-            var memRect = new Rectangle(pos, rectSize);
-            gfx.DrawRectangle(color, memRect);
-
-            for (int i = 1; i < rowsCount; i++)
+            try
             {
-                var yPos = pos.Y + cellSize.Height * i;
-                gfx.DrawLine(color, pos.X, yPos, pos.X + rectSize.Width, yPos);
+                memory.AddPage(page);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
-            for (int i = 1; i < cellsInRow; i++)
-            {
-                var xPos = pos.X + cellSize.Width * i;
-                gfx.DrawLine(color, xPos, pos.Y, xPos, pos.Y + rectSize.Height);
-            }
-
-            var inLastRow = cellsCount - rowsCount * cellsInRow;
-            if (inLastRow > 0)
-            {
-                var yMin = pos.Y + rectSize.Height;
-                var yMax = yMin + cellSize.Height;
-                gfx.DrawLine(color, pos.X, yMax, pos.X + rectSize.Width, yMax);
-
-                for (int i = 0; i <= inLastRow; i++)
-                {
-                    var xPos = pos.X + cellSize.Width * i;
-                    gfx.DrawLine(color, xPos, yMin, xPos, yMax);
-                }
-
-                gfx.DrawLine(color, pos.X + rectSize.Width, yMin, pos.X + rectSize.Width, yMax);
-            }
+            pictureBox1.Invalidate();
         }
     }
 }

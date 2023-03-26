@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drawers\VirtualMemoryDrawer.cs" />
+    <Compile Include="View\PagedMemoryView.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +66,7 @@
     <Compile Include="Forms\PagedMemoryForm.Designer.cs">
       <DependentUpon>PagedMemoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Grid.cs" />
     <Compile Include="Model\Id\Id.cs" />
     <Compile Include="Model\Id\IdUtils.cs" />
     <Compile Include="Model\Memory.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
