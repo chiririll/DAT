@@ -60,7 +60,16 @@
     <Compile Include="Forms\MemoryViewForm.Designer.cs">
       <DependentUpon>MemoryViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PagedMemoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PagedMemoryForm.Designer.cs">
+      <DependentUpon>PagedMemoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Id\Id.cs" />
+    <Compile Include="Model\Id\IdUtils.cs" />
     <Compile Include="Model\Memory.cs" />
+    <Compile Include="Model\Page.cs" />
     <Compile Include="Model\PagedMemory.cs" />
     <Compile Include="Model\VirtualMemory.cs" />
     <Compile Include="Program.cs" />
@@ -73,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryViewForm.resx">
       <DependentUpon>MemoryViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PagedMemoryForm.resx">
+      <DependentUpon>PagedMemoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

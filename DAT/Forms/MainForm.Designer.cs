@@ -41,9 +41,9 @@
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.memTypeLabel = new System.Windows.Forms.Label();
             this.memType = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.memSizeLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip.SuspendLayout();
             this.sidebar.SuspendLayout();
@@ -51,14 +51,14 @@
             // 
             // menuStrip
             // 
-            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(667, 30);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -70,7 +70,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
             this.fileToolStripMenuItem.Tag = "";
             this.fileToolStripMenuItem.Text = "&Файл";
             // 
@@ -78,26 +78,26 @@
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.loadToolStripMenuItem.Text = "&Открыть";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.saveToolStripMenuItem.Text = "&Сохранить";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(267, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(213, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exitToolStripMenuItem.Text = "Вы&ход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.CloseForm);
             // 
@@ -108,25 +108,25 @@
             this.toolStripSeparator2,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(81, 26);
             this.helpToolStripMenuItem.Text = "&Справка";
             // 
             // viewHelpToolStripMenuItem
             // 
             this.viewHelpToolStripMenuItem.Name = "viewHelpToolStripMenuItem";
             this.viewHelpToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
+            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.viewHelpToolStripMenuItem.Text = "&View Help";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.aboutToolStripMenuItem.Text = "&About";
             // 
             // sidebar
@@ -138,19 +138,20 @@
             this.sidebar.Controls.Add(this.label1);
             this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar.Location = new System.Drawing.Point(0, 33);
-            this.sidebar.MinimumSize = new System.Drawing.Size(200, 300);
+            this.sidebar.Location = new System.Drawing.Point(0, 30);
+            this.sidebar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sidebar.MinimumSize = new System.Drawing.Size(167, 250);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(300, 417);
+            this.sidebar.Size = new System.Drawing.Size(250, 345);
             this.sidebar.TabIndex = 1;
             // 
             // memTypeLabel
             // 
             this.memTypeLabel.AutoSize = true;
-            this.memTypeLabel.Location = new System.Drawing.Point(3, 10);
-            this.memTypeLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.memTypeLabel.Location = new System.Drawing.Point(2, 8);
+            this.memTypeLabel.Margin = new System.Windows.Forms.Padding(2, 8, 2, 0);
             this.memTypeLabel.Name = "memTypeLabel";
-            this.memTypeLabel.Size = new System.Drawing.Size(168, 20);
+            this.memTypeLabel.Size = new System.Drawing.Size(144, 16);
             this.memTypeLabel.TabIndex = 0;
             this.memTypeLabel.Text = "Организация памяти";
             // 
@@ -164,58 +165,61 @@
             "Страничная",
             "Сегментная",
             "Странично-сегментная"});
-            this.memType.Location = new System.Drawing.Point(5, 33);
-            this.memType.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.memType.MaximumSize = new System.Drawing.Size(300, 0);
-            this.memType.MinimumSize = new System.Drawing.Size(150, 0);
+            this.memType.Location = new System.Drawing.Point(4, 26);
+            this.memType.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
+            this.memType.MaximumSize = new System.Drawing.Size(251, 0);
+            this.memType.MinimumSize = new System.Drawing.Size(126, 0);
             this.memType.Name = "memType";
-            this.memType.Size = new System.Drawing.Size(282, 28);
+            this.memType.Size = new System.Drawing.Size(236, 24);
             this.memType.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 146);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 26);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Параметры памяти";
             // 
             // memSizeLabel
             // 
             this.memSizeLabel.AutoSize = true;
-            this.memSizeLabel.Location = new System.Drawing.Point(3, 74);
-            this.memSizeLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.memSizeLabel.Location = new System.Drawing.Point(2, 60);
+            this.memSizeLabel.Margin = new System.Windows.Forms.Padding(2, 8, 2, 0);
             this.memSizeLabel.Name = "memSizeLabel";
-            this.memSizeLabel.Size = new System.Drawing.Size(121, 20);
+            this.memSizeLabel.Size = new System.Drawing.Size(101, 16);
             this.memSizeLabel.TabIndex = 3;
             this.memSizeLabel.Text = "Объем памяти";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 97);
+            this.textBox1.Location = new System.Drawing.Point(2, 78);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(284, 26);
+            this.textBox1.Size = new System.Drawing.Size(237, 22);
             this.textBox1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(2, 119);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 17, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 24);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Параметры памяти";
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(3, 175);
+            this.panel1.Location = new System.Drawing.Point(2, 145);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(284, 146);
+            this.panel1.Size = new System.Drawing.Size(237, 122);
             this.panel1.TabIndex = 5;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(667, 375);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "Dynamic Address Translation Model";
             this.menuStrip.ResumeLayout(false);
