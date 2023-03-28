@@ -1,4 +1,6 @@
-﻿namespace DAT.Model
+﻿using System;
+
+namespace DAT.Model
 {
     public class Page
     {
@@ -12,7 +14,7 @@
             }
             else
             {
-                Unload(frame);
+                Unload(address);
             }
         }
 
@@ -20,11 +22,15 @@
         public int Address { get; private set; } = -1;
         public int Frame { get; private set; } = -1;
 
+        public event Action<Id> OnChanged;
+
         public void Unload(int address)
         {
             InPrimary = false;
             Address = address;
             Frame = -1;
+
+            OnChanged?.Invoke(Id);
         }
 
         public void Load(int frame)
@@ -32,6 +38,8 @@
             InPrimary = true;
             Address = -1;
             Frame = frame;
+
+            OnChanged?.Invoke(Id);
         }
     }
 }
