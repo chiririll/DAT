@@ -33,6 +33,8 @@ namespace DAT.View
 
         private void DrawPage(Graphics gfx, Page page)
         {
+            if (page == null) return;
+
             var pos = vMemGrid.GetCellPosition(page.Frame);
 
             gfx.DrawRectangle(pagePen, new Rectangle(pos, vMemGrid.cellSize));

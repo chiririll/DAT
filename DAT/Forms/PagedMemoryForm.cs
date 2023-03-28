@@ -12,7 +12,7 @@ namespace DAT.Forms
 
         public PagedMemoryForm()
         {
-            memory = new PagedMemory();
+            memory = new PagedMemory(32, 128, 5000000);
             memView = new PagedMemoryView(memory);
 
             InitializeComponent();

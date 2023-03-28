@@ -105,46 +105,16 @@ namespace DAT.Model
             {
                 page.Load(frame);
                 UpdatePage(page.Id);
-                
-                return TranslateAddress(pageIndex, pageDelta);
+
+                return page.Frame * (int)pageSize + (int)pageDelta;
             }
 
-
-            // Освобождаем фрейм в первичной памяти
+            // Освобождаем случайный фрейм в первичной памяти
             var randFrame = rand.Next(primary.Length);
-
-            var primPage = primary[randFrame];
-            
             // Меняем местами страницы из первичной и вторичной памяти
-            RemovePage(primPage);
-            primPage.Unload(page.Address);
-            page.Load(randFrame);
-            UpdatePage(page.Id);
-            AddPage(primPage);
+            SwapPages(primary[randFrame], page);
 
-            var pageInPrimary();
-            primary[randFrame].Unload();
-        }
-
-        private int PickFreeFrame()
-        {
-            for (var i = 0; i < primary.Length; i++)
-            {
-                if (primary[i] != null)
-                {
-                    continue;
-                }
-
-                return i;
-            }
-
-            return -1;
-        }
-
-        private int PickFreeAddress()
-        {
-            // TODO
-            throw new System.NotImplementedException();
+            return page.Frame * (int)pageSize + (int)pageDelta;
         }
 
         public Tuple<int, int> TranslateAddress(uint realAddr)
@@ -186,7 +156,7 @@ namespace DAT.Model
                 throw new Exceptions.OutOfFramesException();
             }
             
-            if (primary.Any(p => p.Frame == page.Frame))
+            if (primary.Any(p => p != null && p.Frame == page.Frame))
             {
                 throw new System.ArgumentException("Заданный фрейм занят!");
             }
@@ -225,6 +195,38 @@ namespace DAT.Model
             }
 
             secondary.Add(page);
+        }
+
+        private int PickFreeFrame()
+        {
+            for (var i = 0; i < primary.Length; i++)
+            {
+                if (primary[i] != null)
+                {
+                    continue;
+                }
+
+                return i;
+            }
+
+            return -1;
+        }
+
+        private int PickFreeAddress()
+        {
+            // TODO
+            throw new System.NotImplementedException();
+        }
+        
+        private void SwapPages(Page page1, Page page2)
+        {
+            if (!pages.Contains(page1) || !pages.Contains(page2))
+            {
+                throw new Exceptions.PageNotExistsException();
+            }
+
+            // TODO
+            throw new NotImplementedException();
         }
     }
 }
