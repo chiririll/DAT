@@ -1,4 +1,4 @@
-﻿using DAT.Model;
+﻿using DAT.Model.Paged;
 using System.Drawing;
 
 namespace DAT.View

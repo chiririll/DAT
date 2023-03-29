@@ -47,10 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Exceptions\OutOfFramesException.cs" />
-    <Compile Include="Model\Exceptions\OutOfMemoryException.cs" />
-    <Compile Include="Model\Exceptions\PageAlreadyExistsException.cs" />
-    <Compile Include="Model\Exceptions\PageNotExistsException.cs" />
     <Compile Include="View\PagedMemoryView.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -71,10 +67,6 @@
       <DependentUpon>PagedMemoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Grid.cs" />
-    <Compile Include="Model\Id\Id.cs" />
-    <Compile Include="Model\Id\IdUtils.cs" />
-    <Compile Include="Model\PagedMemory\Page.cs" />
-    <Compile Include="Model\PagedMemory\PagedMemory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\MainForm.en-US.resx">
@@ -111,6 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MemoryModels\MemoryModels.csproj">
+      <Project>{6e24831d-7df6-4319-b169-7b984c883426}</Project>
+      <Name>MemoryModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

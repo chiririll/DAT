@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DAT.Model
+namespace DAT.Model.Paged
 {
     public class PagedMemory
     {
-        private readonly uint pageSize;
-        private readonly uint memorySize;
+        private readonly int pageSize;
+        private readonly int memorySize;
 
         private readonly List<Page> pages = new List<Page>();
         private readonly Page[] primary;
@@ -19,8 +19,21 @@ namespace DAT.Model
         public IEnumerable<Page> Primary => primary;
         public IEnumerable<Page> Secondary => secondary;
 
-        public PagedMemory(uint pageSize, uint framesCount, uint memorySize)
+        public PagedMemory(int pageSize, int framesCount, int memorySize)
         {
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize), "below or equal zero!");
+            }
+            if (memorySize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(memorySize), "below of equal zero!");
+            }
+            if (framesCount <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(framesCount), "below of equal zero!");
+            }
+
             this.pageSize = pageSize;
             this.memorySize = memorySize;
 
@@ -51,7 +64,7 @@ namespace DAT.Model
         public void UpdatePage(Id id)
         {
             var index = pages.FindIndex(p => p.Id == id);
-            
+
             if (index < 0)
             {
                 throw new Exceptions.PageNotExistsException();
@@ -79,11 +92,16 @@ namespace DAT.Model
             pages.Remove(page);
         }
 
-        public int TranslateAddress(uint pageIndex, uint pageDelta)
+        public int TranslateAddress(int pageIndex, int pageDelta)
         {
-            if (pageIndex >= primary.Length || pageDelta >= pageSize)
+            if (pageIndex < 0 || pageIndex >= primary.Length)
             {
-                throw new ArgumentException("Incorrect address!");
+                throw new ArgumentOutOfRangeException(nameof(pageIndex), "page doesn't exists!");
+            }
+
+            if (pageDelta < 0 || pageDelta >= pageSize)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageIndex), "out of range");
             }
 
             // Ищем страницу
@@ -96,7 +114,7 @@ namespace DAT.Model
             // Если страница в первичной памяти
             if (page.InPrimary)
             {
-                return page.Frame * (int)pageSize + (int)pageDelta;
+                return page.Frame * pageSize + pageDelta;
             }
 
             // Загрузка в свободный фрейм

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using DAT.View;
-using DAT.Model;
+using DAT.Model.Paged;
 using System.Drawing;
 
 namespace DAT.Forms

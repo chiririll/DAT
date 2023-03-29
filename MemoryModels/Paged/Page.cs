@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAT.Model
+namespace DAT.Model.Paged
 {
     public class Page
     {
