@@ -42,6 +42,8 @@
             this.newPageAddrLabel = new System.Windows.Forms.Label();
             this.newPageFrameLabel = new System.Windows.Forms.Label();
             this.addPageButton = new System.Windows.Forms.Button();
+            this.addresTranslationLabel = new System.Windows.Forms.Label();
+            this.updateSettingsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pageSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.framesCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memorySize)).BeginInit();
@@ -54,25 +56,58 @@
             // 
             this.pageSize.Location = new System.Drawing.Point(124, 21);
             this.pageSize.Margin = new System.Windows.Forms.Padding(2);
+            this.pageSize.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.pageSize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.pageSize.Name = "pageSize";
             this.pageSize.Size = new System.Drawing.Size(90, 20);
             this.pageSize.TabIndex = 0;
+            this.pageSize.Value = PagedMemoryForm.defaultPageSize;
             // 
             // framesCount
             // 
             this.framesCount.Location = new System.Drawing.Point(124, 46);
             this.framesCount.Margin = new System.Windows.Forms.Padding(2);
+            this.framesCount.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.framesCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.framesCount.Name = "framesCount";
             this.framesCount.Size = new System.Drawing.Size(90, 20);
             this.framesCount.TabIndex = 1;
+            this.framesCount.Value = PagedMemoryForm.defaultFramesCount;
             // 
             // memorySize
             // 
             this.memorySize.Location = new System.Drawing.Point(124, 69);
             this.memorySize.Margin = new System.Windows.Forms.Padding(2);
+            this.memorySize.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.memorySize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.memorySize.Name = "memorySize";
             this.memorySize.Size = new System.Drawing.Size(90, 20);
             this.memorySize.TabIndex = 2;
+            this.memorySize.Value = PagedMemoryForm.defaultMemorySize;
             // 
             // pageSizeLabel
             // 
@@ -118,7 +153,7 @@
             // 
             this.addPageLabel.AutoSize = true;
             this.addPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addPageLabel.Location = new System.Drawing.Point(11, 114);
+            this.addPageLabel.Location = new System.Drawing.Point(12, 125);
             this.addPageLabel.Name = "addPageLabel";
             this.addPageLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.addPageLabel.Size = new System.Drawing.Size(106, 13);
@@ -128,7 +163,7 @@
             // newPageInPrimary
             // 
             this.newPageInPrimary.AutoSize = true;
-            this.newPageInPrimary.Location = new System.Drawing.Point(12, 139);
+            this.newPageInPrimary.Location = new System.Drawing.Point(13, 150);
             this.newPageInPrimary.Name = "newPageInPrimary";
             this.newPageInPrimary.Size = new System.Drawing.Size(129, 17);
             this.newPageInPrimary.TabIndex = 8;
@@ -137,14 +172,14 @@
             // 
             // newPageAddr
             // 
-            this.newPageAddr.Location = new System.Drawing.Point(124, 162);
+            this.newPageAddr.Location = new System.Drawing.Point(125, 173);
             this.newPageAddr.Name = "newPageAddr";
             this.newPageAddr.Size = new System.Drawing.Size(90, 20);
             this.newPageAddr.TabIndex = 9;
             // 
             // newPageFrame
             // 
-            this.newPageFrame.Location = new System.Drawing.Point(124, 186);
+            this.newPageFrame.Location = new System.Drawing.Point(125, 197);
             this.newPageFrame.Name = "newPageFrame";
             this.newPageFrame.Size = new System.Drawing.Size(90, 20);
             this.newPageFrame.TabIndex = 10;
@@ -152,7 +187,7 @@
             // newPageAddrLabel
             // 
             this.newPageAddrLabel.AutoSize = true;
-            this.newPageAddrLabel.Location = new System.Drawing.Point(8, 164);
+            this.newPageAddrLabel.Location = new System.Drawing.Point(9, 175);
             this.newPageAddrLabel.Name = "newPageAddrLabel";
             this.newPageAddrLabel.Size = new System.Drawing.Size(38, 13);
             this.newPageAddrLabel.TabIndex = 11;
@@ -161,7 +196,7 @@
             // newPageFrameLabel
             // 
             this.newPageFrameLabel.AutoSize = true;
-            this.newPageFrameLabel.Location = new System.Drawing.Point(9, 188);
+            this.newPageFrameLabel.Location = new System.Drawing.Point(10, 199);
             this.newPageFrameLabel.Name = "newPageFrameLabel";
             this.newPageFrameLabel.Size = new System.Drawing.Size(74, 13);
             this.newPageFrameLabel.TabIndex = 12;
@@ -169,7 +204,7 @@
             // 
             // addPageButton
             // 
-            this.addPageButton.Location = new System.Drawing.Point(12, 212);
+            this.addPageButton.Location = new System.Drawing.Point(13, 223);
             this.addPageButton.Name = "addPageButton";
             this.addPageButton.Size = new System.Drawing.Size(202, 23);
             this.addPageButton.TabIndex = 13;
@@ -177,11 +212,34 @@
             this.addPageButton.UseVisualStyleBackColor = true;
             this.addPageButton.Click += new System.EventHandler(this.AddPage);
             // 
+            // addresTranslationLabel
+            // 
+            this.addresTranslationLabel.AutoSize = true;
+            this.addresTranslationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addresTranslationLabel.Location = new System.Drawing.Point(13, 260);
+            this.addresTranslationLabel.Name = "addresTranslationLabel";
+            this.addresTranslationLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.addresTranslationLabel.Size = new System.Drawing.Size(132, 13);
+            this.addresTranslationLabel.TabIndex = 14;
+            this.addresTranslationLabel.Text = "Преобразование адреса";
+            // 
+            // updateSettingsButton
+            // 
+            this.updateSettingsButton.Location = new System.Drawing.Point(13, 94);
+            this.updateSettingsButton.Name = "updateSettingsButton";
+            this.updateSettingsButton.Size = new System.Drawing.Size(202, 23);
+            this.updateSettingsButton.TabIndex = 15;
+            this.updateSettingsButton.Text = "Установить";
+            this.updateSettingsButton.UseVisualStyleBackColor = true;
+            this.updateSettingsButton.Click += new System.EventHandler(this.UpdateSettings);
+            // 
             // PagedMemoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.updateSettingsButton);
+            this.Controls.Add(this.addresTranslationLabel);
             this.Controls.Add(this.addPageButton);
             this.Controls.Add(this.newPageFrameLabel);
             this.Controls.Add(this.newPageAddrLabel);
@@ -226,5 +284,7 @@
         private System.Windows.Forms.Label newPageAddrLabel;
         private System.Windows.Forms.Label newPageFrameLabel;
         private System.Windows.Forms.Button addPageButton;
+        private System.Windows.Forms.Label addresTranslationLabel;
+        private System.Windows.Forms.Button updateSettingsButton;
     }
 }

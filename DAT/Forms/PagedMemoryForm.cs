@@ -7,12 +7,16 @@ namespace DAT.Forms
 {
     public partial class PagedMemoryForm : Form
     {
+        private const int defaultPageSize = 32;
+        private const int defaultFramesCount = 64;
+        private const int defaultMemorySize = 512 * 1024;
+
         private PagedMemory memory;
         private PagedMemoryView memView;
 
         public PagedMemoryForm()
         {
-            memory = new PagedMemory(32, 128, 5000000);
+            memory = new PagedMemory(defaultPageSize, defaultFramesCount, defaultMemorySize);
             memView = new PagedMemoryView(memory);
 
             InitializeComponent();
@@ -37,6 +41,14 @@ namespace DAT.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+
+            pictureBox1.Invalidate();
+        }
+
+        private void UpdateSettings(object sender, System.EventArgs e)
+        {
+            memory = new PagedMemory((int)pageSize.Value, (int)framesCount.Value, (int)memorySize.Value);
+            memView = new PagedMemoryView(memory);
 
             pictureBox1.Invalidate();
         }
