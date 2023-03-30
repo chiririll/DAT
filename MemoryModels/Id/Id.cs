@@ -17,5 +17,10 @@ namespace DAT.Model
         }
 
         public static implicit operator int(Id id) => id.id;
+
+        public override string ToString()
+        {
+            return id.ToString();
+        }
     }
 }

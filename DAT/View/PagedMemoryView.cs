@@ -11,7 +11,9 @@ namespace DAT.View
         private Pen gridPen;
         private Pen pagePen;
 
-        public PagedMemoryView(PagedMemory memory)
+        private Font font;
+
+        public PagedMemoryView(PagedMemory memory, Font font)
         {
             this.memory = memory;
 
@@ -19,11 +21,13 @@ namespace DAT.View
 
             gridPen = Pens.LightGray;
             pagePen = Pens.Red;
+
+            this.font = font;
         }
 
         public void Draw(Graphics gfx)
         {
-            vMemGrid.Draw(gfx, 30, gridPen);
+            vMemGrid.Draw(gfx, memory.FramesCount, gridPen);
 
             foreach (var page in memory.Primary)
             {
@@ -38,6 +42,7 @@ namespace DAT.View
             var pos = vMemGrid.GetCellPosition(page.Frame);
 
             gfx.DrawRectangle(pagePen, new Rectangle(pos, vMemGrid.cellSize));
+            gfx.DrawString(page.Id.ToString(), font, Brushes.Black, pos);
         }
     }
 }

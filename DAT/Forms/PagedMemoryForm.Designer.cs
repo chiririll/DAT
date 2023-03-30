@@ -44,12 +44,22 @@
             this.addPageButton = new System.Windows.Forms.Button();
             this.addresTranslationLabel = new System.Windows.Forms.Label();
             this.updateSettingsButton = new System.Windows.Forms.Button();
+            this.translatePageIndexLabel = new System.Windows.Forms.Label();
+            this.translatePageOffsetLabel = new System.Windows.Forms.Label();
+            this.translatePageOffset = new System.Windows.Forms.NumericUpDown();
+            this.translatePageIndex = new System.Windows.Forms.NumericUpDown();
+            this.translateRealAddress = new System.Windows.Forms.NumericUpDown();
+            this.translateRealAddressLabel = new System.Windows.Forms.Label();
+            this.translateAddressButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pageSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.framesCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memorySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageAddr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageFrame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.translatePageOffset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.translatePageIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.translateRealAddress)).BeginInit();
             this.SuspendLayout();
             // 
             // pageSize
@@ -69,7 +79,7 @@
             this.pageSize.Name = "pageSize";
             this.pageSize.Size = new System.Drawing.Size(90, 20);
             this.pageSize.TabIndex = 0;
-            this.pageSize.Value = PagedMemoryForm.defaultPageSize;
+            this.pageSize.Value = defaultPageSize;
             // 
             // framesCount
             // 
@@ -88,7 +98,7 @@
             this.framesCount.Name = "framesCount";
             this.framesCount.Size = new System.Drawing.Size(90, 20);
             this.framesCount.TabIndex = 1;
-            this.framesCount.Value = PagedMemoryForm.defaultFramesCount;
+            this.framesCount.Value = defaultFramesCount;
             // 
             // memorySize
             // 
@@ -107,7 +117,7 @@
             this.memorySize.Name = "memorySize";
             this.memorySize.Size = new System.Drawing.Size(90, 20);
             this.memorySize.TabIndex = 2;
-            this.memorySize.Value = PagedMemoryForm.defaultMemorySize;
+            this.memorySize.Value = defaultMemorySize;
             // 
             // pageSizeLabel
             // 
@@ -144,7 +154,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(219, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(372, 346);
+            this.pictureBox1.Size = new System.Drawing.Size(372, 392);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawMemory);
@@ -173,6 +183,11 @@
             // newPageAddr
             // 
             this.newPageAddr.Location = new System.Drawing.Point(125, 173);
+            this.newPageAddr.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.newPageAddr.Name = "newPageAddr";
             this.newPageAddr.Size = new System.Drawing.Size(90, 20);
             this.newPageAddr.TabIndex = 9;
@@ -180,6 +195,11 @@
             // newPageFrame
             // 
             this.newPageFrame.Location = new System.Drawing.Point(125, 197);
+            this.newPageFrame.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.newPageFrame.Name = "newPageFrame";
             this.newPageFrame.Size = new System.Drawing.Size(90, 20);
             this.newPageFrame.TabIndex = 10;
@@ -233,11 +253,91 @@
             this.updateSettingsButton.UseVisualStyleBackColor = true;
             this.updateSettingsButton.Click += new System.EventHandler(this.UpdateSettings);
             // 
+            // translatePageIndexLabel
+            // 
+            this.translatePageIndexLabel.AutoSize = true;
+            this.translatePageIndexLabel.Location = new System.Drawing.Point(12, 282);
+            this.translatePageIndexLabel.Name = "translatePageIndexLabel";
+            this.translatePageIndexLabel.Size = new System.Drawing.Size(93, 13);
+            this.translatePageIndexLabel.TabIndex = 16;
+            this.translatePageIndexLabel.Text = "Номер страницы";
+            // 
+            // translatePageOffsetLabel
+            // 
+            this.translatePageOffsetLabel.AutoSize = true;
+            this.translatePageOffsetLabel.Location = new System.Drawing.Point(121, 282);
+            this.translatePageOffsetLabel.Name = "translatePageOffsetLabel";
+            this.translatePageOffsetLabel.Size = new System.Drawing.Size(61, 13);
+            this.translatePageOffsetLabel.TabIndex = 17;
+            this.translatePageOffsetLabel.Text = "Смещение";
+            // 
+            // translatePageOffset
+            // 
+            this.translatePageOffset.Location = new System.Drawing.Point(124, 298);
+            this.translatePageOffset.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.translatePageOffset.Name = "translatePageOffset";
+            this.translatePageOffset.Size = new System.Drawing.Size(91, 20);
+            this.translatePageOffset.TabIndex = 18;
+            // 
+            // translatePageIndex
+            // 
+            this.translatePageIndex.Location = new System.Drawing.Point(13, 298);
+            this.translatePageIndex.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.translatePageIndex.Name = "translatePageIndex";
+            this.translatePageIndex.Size = new System.Drawing.Size(91, 20);
+            this.translatePageIndex.TabIndex = 19;
+            // 
+            // translateRealAddress
+            // 
+            this.translateRealAddress.Location = new System.Drawing.Point(12, 341);
+            this.translateRealAddress.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.translateRealAddress.Name = "translateRealAddress";
+            this.translateRealAddress.Size = new System.Drawing.Size(203, 20);
+            this.translateRealAddress.TabIndex = 20;
+            // 
+            // translateRealAddressLabel
+            // 
+            this.translateRealAddressLabel.AutoSize = true;
+            this.translateRealAddressLabel.Location = new System.Drawing.Point(9, 325);
+            this.translateRealAddressLabel.Name = "translateRealAddressLabel";
+            this.translateRealAddressLabel.Size = new System.Drawing.Size(91, 13);
+            this.translateRealAddressLabel.TabIndex = 21;
+            this.translateRealAddressLabel.Text = "Реальный адрес";
+            // 
+            // translateAddressButton
+            // 
+            this.translateAddressButton.Location = new System.Drawing.Point(13, 367);
+            this.translateAddressButton.Name = "translateAddressButton";
+            this.translateAddressButton.Size = new System.Drawing.Size(202, 23);
+            this.translateAddressButton.TabIndex = 22;
+            this.translateAddressButton.Text = "Преобразовать";
+            this.translateAddressButton.UseVisualStyleBackColor = true;
+            this.translateAddressButton.Click += new System.EventHandler(this.TranslateAddress);
+            // 
             // PagedMemoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(600, 407);
+            this.Controls.Add(this.translateAddressButton);
+            this.Controls.Add(this.translateRealAddressLabel);
+            this.Controls.Add(this.translateRealAddress);
+            this.Controls.Add(this.translatePageIndex);
+            this.Controls.Add(this.translatePageOffset);
+            this.Controls.Add(this.translatePageOffsetLabel);
+            this.Controls.Add(this.translatePageIndexLabel);
             this.Controls.Add(this.updateSettingsButton);
             this.Controls.Add(this.addresTranslationLabel);
             this.Controls.Add(this.addPageButton);
@@ -263,6 +363,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageAddr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageFrame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.translatePageOffset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.translatePageIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.translateRealAddress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,5 +389,12 @@
         private System.Windows.Forms.Button addPageButton;
         private System.Windows.Forms.Label addresTranslationLabel;
         private System.Windows.Forms.Button updateSettingsButton;
+        private System.Windows.Forms.Label translatePageIndexLabel;
+        private System.Windows.Forms.Label translatePageOffsetLabel;
+        private System.Windows.Forms.NumericUpDown translatePageOffset;
+        private System.Windows.Forms.NumericUpDown translatePageIndex;
+        private System.Windows.Forms.NumericUpDown translateRealAddress;
+        private System.Windows.Forms.Label translateRealAddressLabel;
+        private System.Windows.Forms.Button translateAddressButton;
     }
 }

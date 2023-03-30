@@ -6,8 +6,8 @@ namespace DAT.Model.Paged
 {
     public class PagedMemory
     {
-        private readonly int pageSize;
-        private readonly int memorySize;
+        public readonly int pageSize;
+        public readonly int memorySize;
 
         private readonly List<Page> pages = new List<Page>();
         private readonly Page[] primary;
@@ -18,6 +18,8 @@ namespace DAT.Model.Paged
         public IEnumerable<Page> Pages => pages;
         public IEnumerable<Page> Primary => primary;
         public IEnumerable<Page> Secondary => secondary;
+
+        public int FramesCount => primary.Length;
 
         public PagedMemory(int pageSize, int framesCount, int memorySize)
         {

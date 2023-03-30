@@ -17,7 +17,7 @@ namespace DAT.Forms
         public PagedMemoryForm()
         {
             memory = new PagedMemory(defaultPageSize, defaultFramesCount, defaultMemorySize);
-            memView = new PagedMemoryView(memory);
+            memView = new PagedMemoryView(memory, this.Font);
 
             InitializeComponent();
         }
@@ -48,9 +48,21 @@ namespace DAT.Forms
         private void UpdateSettings(object sender, System.EventArgs e)
         {
             memory = new PagedMemory((int)pageSize.Value, (int)framesCount.Value, (int)memorySize.Value);
-            memView = new PagedMemoryView(memory);
+            memView = new PagedMemoryView(memory, this.Font);
 
             pictureBox1.Invalidate();
+        }
+
+        private void TranslateAddress(object sender, System.EventArgs e)
+        {
+            try
+            {
+                translateRealAddress.Value = memory.TranslateAddress((int)translatePageIndex.Value, (int)translatePageOffset.Value);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

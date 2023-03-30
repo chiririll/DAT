@@ -4,7 +4,7 @@ namespace DAT.Model.Paged
 {
     public class Page
     {
-        public Id Id { get; }
+        public Id Id { get; } = new Id();
 
         public Page(bool inPrimary, int address = -1, int frame = -1)
         {
