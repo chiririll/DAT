@@ -79,7 +79,7 @@
             this.pageSize.Name = "pageSize";
             this.pageSize.Size = new System.Drawing.Size(90, 20);
             this.pageSize.TabIndex = 0;
-            this.pageSize.Value = defaultPageSize;
+            this.pageSize.Value = PagedMemoryForm.defaultPageSize;
             // 
             // framesCount
             // 
@@ -98,7 +98,7 @@
             this.framesCount.Name = "framesCount";
             this.framesCount.Size = new System.Drawing.Size(90, 20);
             this.framesCount.TabIndex = 1;
-            this.framesCount.Value = defaultFramesCount;
+            this.framesCount.Value = PagedMemoryForm.defaultFramesCount;
             // 
             // memorySize
             // 
@@ -117,7 +117,7 @@
             this.memorySize.Name = "memorySize";
             this.memorySize.Size = new System.Drawing.Size(90, 20);
             this.memorySize.TabIndex = 2;
-            this.memorySize.Value = defaultMemorySize;
+            this.memorySize.Value = PagedMemoryForm.defaultMemorySize;
             // 
             // pageSizeLabel
             // 

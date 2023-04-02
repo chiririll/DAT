@@ -7,9 +7,9 @@ namespace DAT.Forms
 {
     public partial class PagedMemoryForm : Form
     {
-        private const int defaultPageSize = 32;
-        private const int defaultFramesCount = 64;
-        private const int defaultMemorySize = 512 * 1024;
+        public const int defaultPageSize = 32;
+        public const int defaultFramesCount = 64;
+        public const int defaultMemorySize = 512 * 1024;
 
         private PagedMemory memory;
         private PagedMemoryView memView;
@@ -58,11 +58,14 @@ namespace DAT.Forms
             try
             {
                 translateRealAddress.Value = memory.TranslateAddress((int)translatePageIndex.Value, (int)translatePageOffset.Value);
+                
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            pictureBox1.Invalidate();
         }
     }
 }

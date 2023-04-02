@@ -96,11 +96,6 @@ namespace DAT.Model.Paged
 
         public int TranslateAddress(int pageIndex, int pageDelta)
         {
-            if (pageIndex < 0 || pageIndex >= primary.Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(pageIndex), "page doesn't exists!");
-            }
-
             if (pageDelta < 0 || pageDelta >= pageSize)
             {
                 throw new ArgumentOutOfRangeException(nameof(pageIndex), "out of range");
@@ -121,7 +116,7 @@ namespace DAT.Model.Paged
 
             // Загрузка в свободный фрейм
             var frame = PickFreeFrame();
-            if (frame > 0)
+            if (frame >= 0)
             {
                 page.Load(frame);
                 UpdatePage(page.Id);
