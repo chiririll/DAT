@@ -227,11 +227,15 @@ namespace DAT.Model.Paged
             return -1;
         }
 
-        private int PickFreeAddress()
-        {
-            // TODO
-            throw new System.NotImplementedException();
-        }
+        //private int PickFreeAddress()
+        //{
+        //    var startAddr = secondary.Select(x => x.Address).ToList();
+        //    startAddr.Sort();
+
+        //    var addr = 0;
+        //    while (addr  && addr < memorySize)
+
+        //}
         
         private void SwapPages(Page page1, Page page2)
         {
