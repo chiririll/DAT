@@ -491,7 +491,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 470);
             this.Name = "PagedMemoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PagedMemory";
+            this.Text = "Динамическое преобразование адреса";
             ((System.ComponentModel.ISupportInitialize)(this.pageSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.framesCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memorySize)).EndInit();

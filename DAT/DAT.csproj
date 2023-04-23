@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\PageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PageForm.Designer.cs">
+      <DependentUpon>PageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GraphicsExtensions.cs" />
     <Compile Include="View\PagedMemoryView.cs" />
     <Compile Include="Forms\PagedMemoryForm.cs">
@@ -61,6 +67,9 @@
     <Compile Include="View\Palette.cs" />
     <EmbeddedResource Include="Forms\PagedMemoryForm.resx">
       <DependentUpon>PagedMemoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PageForm.resx">
+      <DependentUpon>PageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

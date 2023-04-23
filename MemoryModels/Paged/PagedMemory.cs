@@ -93,7 +93,6 @@ namespace DAT.Model.Paged
             }
 
             UpdatePage(index);
-            MemoryUpdated?.Invoke();
         }
 
         public void RemovePage(Page page)
@@ -179,12 +178,18 @@ namespace DAT.Model.Paged
 
             if (page.InPrimary)
             {
+                if (secondary.Contains(page)) secondary.Remove(page);
                 AddInPrimary(page);
             }
             else
             {
+                if (page.Frame >= 0 && page.Frame < primary.Length && primary[page.Frame] != null)
+                {
+                    RemoveFromPrimary(page);
+                }
                 AddInSecondary(page);
             }
+            MemoryUpdated?.Invoke();
         }
 
         private void AddInPrimary(Page page)
