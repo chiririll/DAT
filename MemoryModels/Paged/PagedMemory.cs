@@ -14,6 +14,7 @@ namespace DAT.Model.Paged
         private readonly List<Page> pages = new List<Page>();
 
         private readonly Random rand;
+
         public PagedMemory(int pageSize, int framesCount, int memorySize)
         {
             rand = new Random();

@@ -1,6 +1,5 @@
 ﻿using DAT.Model.Paged;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -15,7 +14,8 @@ namespace DAT.View
         private Pen framePen;
         private Pen gridPen;
         private Brush pageBrush;
-        
+        private Brush selectBrush;
+
         private PictureBox container;
         private Point offset;
 
@@ -28,7 +28,8 @@ namespace DAT.View
             Font font,
             Pen gridPen = null,
             Pen framePen = null,
-            Brush pageBrush = null)
+            Brush pageBrush = null,
+            Brush selectBrush = null)
         {
             this.CellsCount = cellsCount;
 
@@ -40,6 +41,7 @@ namespace DAT.View
             this.framePen = framePen ?? Palette.FramePen;
             this.gridPen = gridPen ?? Palette.GridPen;
             this.pageBrush = pageBrush ?? Palette.PageBrush;
+            this.selectBrush = selectBrush ?? Palette.SelectBrush;
         }
 
         public int CellsCount { get; private set; }
@@ -49,6 +51,7 @@ namespace DAT.View
         public void SetCellsCount(int cellsCount)
         {
             this.CellsCount = cellsCount;
+            RecalculateSize();
 
             container.Invalidate();
         }
@@ -83,14 +86,25 @@ namespace DAT.View
             return idx;
         }
 
-        public void Draw(Graphics gfx, IEnumerable<Page> framePages = null, IEnumerable<Page> memoryPages = null, int pageSize = default)
+        public void Draw(
+            Graphics gfx,
+            IEnumerable<Page> framePages = null,
+            IEnumerable<Page> memoryPages = null,
+            int pageSize = default,
+            int? selectedCell = null)
         {
             RecalculateSize();
-            
+
             DrawGrid(gfx);
 
             if (framePages != null) DrawPagesInFrames(gfx, framePages);
             if (memoryPages != null) DrawPagesInMemory(gfx, memoryPages, pageSize);
+            if (selectedCell.HasValue) DrawSelectedCell(gfx, selectedCell.Value);
+        }
+
+        public int GetSquareSizeWidth()
+        {
+            return Convert.ToInt32(Math.Floor(Math.Sqrt(CellsCount)) * cellSize.Width + offset.X);
         }
 
         private void DrawGrid(Graphics gfx)
@@ -153,6 +167,11 @@ namespace DAT.View
                 }
                 gfx.DrawString(page.Id.ToString(), font, Brushes.White, GetCellPosition(page.Address));
             }
+        }
+
+        private void DrawSelectedCell(Graphics gfx, int cell)
+        {
+            gfx.FillRectangle(selectBrush, GetCellPosition(cell), cellSize);
         }
     }
 }

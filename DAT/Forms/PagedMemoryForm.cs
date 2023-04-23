@@ -50,8 +50,12 @@ namespace DAT.Forms
                 translateRealAddress.Value = memory.TranslateAddress((int)translatePageIndex.Value, (int)translatePageOffset.Value);
 
                 primaryMemPicture.Invalidate();
-                pageForm.SetData(memory.Primary.ElementAt((int)translatePageIndex.Value), memory.PageSize);
-                pageForm.Show();
+                
+                if (pageForm.IsDisposed)
+                    pageForm = new PageForm();
+
+                pageForm.SetData(memory.Primary.ElementAt((int)translatePageIndex.Value), memory.PageSize, (int)translatePageOffset.Value);
+                pageForm.ShowDialog();
             }
             catch (System.Exception ex)
             {

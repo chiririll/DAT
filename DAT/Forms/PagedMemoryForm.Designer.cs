@@ -328,6 +328,7 @@
             // 
             // translateRealAddress
             // 
+            this.translateRealAddress.Enabled = false;
             this.translateRealAddress.Location = new System.Drawing.Point(8, 94);
             this.translateRealAddress.Maximum = new decimal(new int[] {
             2147483647,
