@@ -42,7 +42,7 @@ namespace DAT.Forms
                 MessageBox.Show(ex.Message);
             }
 
-            pictureBox1.Invalidate();
+            primaryMemPicture.Invalidate();
         }
 
         private void UpdateSettings(object sender, System.EventArgs e)
@@ -50,7 +50,7 @@ namespace DAT.Forms
             memory = new PagedMemory((int)pageSize.Value, (int)framesCount.Value, (int)memorySize.Value);
             memView = new PagedMemoryView(memory, this.Font);
 
-            pictureBox1.Invalidate();
+            primaryMemPicture.Invalidate();
         }
 
         private void TranslateAddress(object sender, System.EventArgs e)
@@ -65,7 +65,7 @@ namespace DAT.Forms
                 MessageBox.Show(ex.Message);
             }
 
-            pictureBox1.Invalidate();
+            primaryMemPicture.Invalidate();
         }
     }
 }

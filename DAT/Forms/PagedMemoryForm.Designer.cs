@@ -34,7 +34,7 @@
             this.pageSizeLabel = new System.Windows.Forms.Label();
             this.framesCountLabel = new System.Windows.Forms.Label();
             this.memorySizeLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.primaryMemPicture = new System.Windows.Forms.PictureBox();
             this.addPageLabel = new System.Windows.Forms.Label();
             this.newPageInPrimary = new System.Windows.Forms.CheckBox();
             this.newPageAddr = new System.Windows.Forms.NumericUpDown();
@@ -51,20 +51,37 @@
             this.translateRealAddress = new System.Windows.Forms.NumericUpDown();
             this.translateRealAddressLabel = new System.Windows.Forms.Label();
             this.translateAddressButton = new System.Windows.Forms.Button();
+            this.secondaryMemPicture = new System.Windows.Forms.PictureBox();
+            this.rootLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsPanel = new System.Windows.Forms.Panel();
+            this.addPagePanel = new System.Windows.Forms.Panel();
+            this.translatePanel = new System.Windows.Forms.Panel();
+            this.settingsLabel = new System.Windows.Forms.Label();
+            this.controlsLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.primaryMemScrollView = new System.Windows.Forms.Panel();
+            this.secondaryMemScrollView = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pageSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.framesCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memorySize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.primaryMemPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageAddr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.translatePageOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.translatePageIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.translateRealAddress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondaryMemPicture)).BeginInit();
+            this.rootLayout.SuspendLayout();
+            this.settingsPanel.SuspendLayout();
+            this.addPagePanel.SuspendLayout();
+            this.translatePanel.SuspendLayout();
+            this.controlsLayout.SuspendLayout();
+            this.primaryMemScrollView.SuspendLayout();
+            this.secondaryMemScrollView.SuspendLayout();
             this.SuspendLayout();
             // 
             // pageSize
             // 
-            this.pageSize.Location = new System.Drawing.Point(124, 21);
+            this.pageSize.Location = new System.Drawing.Point(144, 33);
             this.pageSize.Margin = new System.Windows.Forms.Padding(2);
             this.pageSize.Maximum = new decimal(new int[] {
             2147483647,
@@ -79,11 +96,15 @@
             this.pageSize.Name = "pageSize";
             this.pageSize.Size = new System.Drawing.Size(90, 20);
             this.pageSize.TabIndex = 0;
-            this.pageSize.Value = PagedMemoryForm.defaultPageSize;
+            this.pageSize.Value = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
             // 
             // framesCount
             // 
-            this.framesCount.Location = new System.Drawing.Point(124, 46);
+            this.framesCount.Location = new System.Drawing.Point(144, 57);
             this.framesCount.Margin = new System.Windows.Forms.Padding(2);
             this.framesCount.Maximum = new decimal(new int[] {
             2147483647,
@@ -98,11 +119,15 @@
             this.framesCount.Name = "framesCount";
             this.framesCount.Size = new System.Drawing.Size(90, 20);
             this.framesCount.TabIndex = 1;
-            this.framesCount.Value = PagedMemoryForm.defaultFramesCount;
+            this.framesCount.Value = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
             // 
             // memorySize
             // 
-            this.memorySize.Location = new System.Drawing.Point(124, 69);
+            this.memorySize.Location = new System.Drawing.Point(144, 81);
             this.memorySize.Margin = new System.Windows.Forms.Padding(2);
             this.memorySize.Maximum = new decimal(new int[] {
             2147483647,
@@ -117,12 +142,16 @@
             this.memorySize.Name = "memorySize";
             this.memorySize.Size = new System.Drawing.Size(90, 20);
             this.memorySize.TabIndex = 2;
-            this.memorySize.Value = PagedMemoryForm.defaultMemorySize;
+            this.memorySize.Value = new decimal(new int[] {
+            524288,
+            0,
+            0,
+            0});
             // 
             // pageSizeLabel
             // 
             this.pageSizeLabel.AutoSize = true;
-            this.pageSizeLabel.Location = new System.Drawing.Point(9, 23);
+            this.pageSizeLabel.Location = new System.Drawing.Point(5, 35);
             this.pageSizeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pageSizeLabel.Name = "pageSizeLabel";
             this.pageSizeLabel.Size = new System.Drawing.Size(98, 13);
@@ -132,7 +161,7 @@
             // framesCountLabel
             // 
             this.framesCountLabel.AutoSize = true;
-            this.framesCountLabel.Location = new System.Drawing.Point(9, 48);
+            this.framesCountLabel.Location = new System.Drawing.Point(5, 59);
             this.framesCountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.framesCountLabel.Name = "framesCountLabel";
             this.framesCountLabel.Size = new System.Drawing.Size(105, 13);
@@ -142,38 +171,40 @@
             // memorySizeLabel
             // 
             this.memorySizeLabel.AutoSize = true;
-            this.memorySizeLabel.Location = new System.Drawing.Point(9, 71);
+            this.memorySizeLabel.Location = new System.Drawing.Point(5, 83);
             this.memorySizeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.memorySizeLabel.Name = "memorySizeLabel";
             this.memorySizeLabel.Size = new System.Drawing.Size(82, 13);
             this.memorySizeLabel.TabIndex = 5;
             this.memorySizeLabel.Text = "Объем памяти";
             // 
-            // pictureBox1
+            // primaryMemPicture
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(219, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(372, 392);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawMemory);
+            this.primaryMemPicture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.primaryMemPicture.Location = new System.Drawing.Point(0, 0);
+            this.primaryMemPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.primaryMemPicture.Name = "primaryMemPicture";
+            this.primaryMemPicture.Size = new System.Drawing.Size(246, 392);
+            this.primaryMemPicture.TabIndex = 6;
+            this.primaryMemPicture.TabStop = false;
+            this.primaryMemPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawMemory);
             // 
             // addPageLabel
             // 
-            this.addPageLabel.AutoSize = true;
-            this.addPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addPageLabel.Location = new System.Drawing.Point(12, 125);
+            this.addPageLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPageLabel.Location = new System.Drawing.Point(0, 0);
             this.addPageLabel.Name = "addPageLabel";
             this.addPageLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.addPageLabel.Size = new System.Drawing.Size(106, 13);
+            this.addPageLabel.Size = new System.Drawing.Size(238, 30);
             this.addPageLabel.TabIndex = 7;
             this.addPageLabel.Text = "Добавить страницу";
+            this.addPageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // newPageInPrimary
             // 
             this.newPageInPrimary.AutoSize = true;
-            this.newPageInPrimary.Location = new System.Drawing.Point(13, 150);
+            this.newPageInPrimary.Location = new System.Drawing.Point(8, 33);
             this.newPageInPrimary.Name = "newPageInPrimary";
             this.newPageInPrimary.Size = new System.Drawing.Size(129, 17);
             this.newPageInPrimary.TabIndex = 8;
@@ -182,7 +213,7 @@
             // 
             // newPageAddr
             // 
-            this.newPageAddr.Location = new System.Drawing.Point(125, 173);
+            this.newPageAddr.Location = new System.Drawing.Point(144, 56);
             this.newPageAddr.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -194,7 +225,7 @@
             // 
             // newPageFrame
             // 
-            this.newPageFrame.Location = new System.Drawing.Point(125, 197);
+            this.newPageFrame.Location = new System.Drawing.Point(144, 80);
             this.newPageFrame.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -207,7 +238,7 @@
             // newPageAddrLabel
             // 
             this.newPageAddrLabel.AutoSize = true;
-            this.newPageAddrLabel.Location = new System.Drawing.Point(9, 175);
+            this.newPageAddrLabel.Location = new System.Drawing.Point(5, 58);
             this.newPageAddrLabel.Name = "newPageAddrLabel";
             this.newPageAddrLabel.Size = new System.Drawing.Size(38, 13);
             this.newPageAddrLabel.TabIndex = 11;
@@ -216,7 +247,7 @@
             // newPageFrameLabel
             // 
             this.newPageFrameLabel.AutoSize = true;
-            this.newPageFrameLabel.Location = new System.Drawing.Point(10, 199);
+            this.newPageFrameLabel.Location = new System.Drawing.Point(5, 82);
             this.newPageFrameLabel.Name = "newPageFrameLabel";
             this.newPageFrameLabel.Size = new System.Drawing.Size(74, 13);
             this.newPageFrameLabel.TabIndex = 12;
@@ -224,9 +255,9 @@
             // 
             // addPageButton
             // 
-            this.addPageButton.Location = new System.Drawing.Point(13, 223);
+            this.addPageButton.Location = new System.Drawing.Point(5, 106);
             this.addPageButton.Name = "addPageButton";
-            this.addPageButton.Size = new System.Drawing.Size(202, 23);
+            this.addPageButton.Size = new System.Drawing.Size(230, 23);
             this.addPageButton.TabIndex = 13;
             this.addPageButton.Text = "Добавить";
             this.addPageButton.UseVisualStyleBackColor = true;
@@ -234,20 +265,21 @@
             // 
             // addresTranslationLabel
             // 
-            this.addresTranslationLabel.AutoSize = true;
-            this.addresTranslationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addresTranslationLabel.Location = new System.Drawing.Point(13, 260);
+            this.addresTranslationLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addresTranslationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addresTranslationLabel.Location = new System.Drawing.Point(0, 0);
             this.addresTranslationLabel.Name = "addresTranslationLabel";
             this.addresTranslationLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.addresTranslationLabel.Size = new System.Drawing.Size(132, 13);
+            this.addresTranslationLabel.Size = new System.Drawing.Size(238, 30);
             this.addresTranslationLabel.TabIndex = 14;
             this.addresTranslationLabel.Text = "Преобразование адреса";
+            this.addresTranslationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // updateSettingsButton
             // 
-            this.updateSettingsButton.Location = new System.Drawing.Point(13, 94);
+            this.updateSettingsButton.Location = new System.Drawing.Point(5, 106);
             this.updateSettingsButton.Name = "updateSettingsButton";
-            this.updateSettingsButton.Size = new System.Drawing.Size(202, 23);
+            this.updateSettingsButton.Size = new System.Drawing.Size(230, 23);
             this.updateSettingsButton.TabIndex = 15;
             this.updateSettingsButton.Text = "Установить";
             this.updateSettingsButton.UseVisualStyleBackColor = true;
@@ -256,7 +288,7 @@
             // translatePageIndexLabel
             // 
             this.translatePageIndexLabel.AutoSize = true;
-            this.translatePageIndexLabel.Location = new System.Drawing.Point(12, 282);
+            this.translatePageIndexLabel.Location = new System.Drawing.Point(5, 39);
             this.translatePageIndexLabel.Name = "translatePageIndexLabel";
             this.translatePageIndexLabel.Size = new System.Drawing.Size(93, 13);
             this.translatePageIndexLabel.TabIndex = 16;
@@ -265,7 +297,7 @@
             // translatePageOffsetLabel
             // 
             this.translatePageOffsetLabel.AutoSize = true;
-            this.translatePageOffsetLabel.Location = new System.Drawing.Point(121, 282);
+            this.translatePageOffsetLabel.Location = new System.Drawing.Point(140, 39);
             this.translatePageOffsetLabel.Name = "translatePageOffsetLabel";
             this.translatePageOffsetLabel.Size = new System.Drawing.Size(61, 13);
             this.translatePageOffsetLabel.TabIndex = 17;
@@ -273,7 +305,7 @@
             // 
             // translatePageOffset
             // 
-            this.translatePageOffset.Location = new System.Drawing.Point(124, 298);
+            this.translatePageOffset.Location = new System.Drawing.Point(143, 55);
             this.translatePageOffset.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -285,7 +317,7 @@
             // 
             // translatePageIndex
             // 
-            this.translatePageIndex.Location = new System.Drawing.Point(13, 298);
+            this.translatePageIndex.Location = new System.Drawing.Point(8, 55);
             this.translatePageIndex.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -297,20 +329,20 @@
             // 
             // translateRealAddress
             // 
-            this.translateRealAddress.Location = new System.Drawing.Point(12, 341);
+            this.translateRealAddress.Location = new System.Drawing.Point(8, 94);
             this.translateRealAddress.Maximum = new decimal(new int[] {
             2147483647,
             0,
             0,
             0});
             this.translateRealAddress.Name = "translateRealAddress";
-            this.translateRealAddress.Size = new System.Drawing.Size(203, 20);
+            this.translateRealAddress.Size = new System.Drawing.Size(226, 20);
             this.translateRealAddress.TabIndex = 20;
             // 
             // translateRealAddressLabel
             // 
             this.translateRealAddressLabel.AutoSize = true;
-            this.translateRealAddressLabel.Location = new System.Drawing.Point(9, 325);
+            this.translateRealAddressLabel.Location = new System.Drawing.Point(5, 78);
             this.translateRealAddressLabel.Name = "translateRealAddressLabel";
             this.translateRealAddressLabel.Size = new System.Drawing.Size(91, 13);
             this.translateRealAddressLabel.TabIndex = 21;
@@ -318,56 +350,171 @@
             // 
             // translateAddressButton
             // 
-            this.translateAddressButton.Location = new System.Drawing.Point(13, 367);
+            this.translateAddressButton.Location = new System.Drawing.Point(8, 120);
             this.translateAddressButton.Name = "translateAddressButton";
-            this.translateAddressButton.Size = new System.Drawing.Size(202, 23);
+            this.translateAddressButton.Size = new System.Drawing.Size(226, 23);
             this.translateAddressButton.TabIndex = 22;
             this.translateAddressButton.Text = "Преобразовать";
             this.translateAddressButton.UseVisualStyleBackColor = true;
             this.translateAddressButton.Click += new System.EventHandler(this.TranslateAddress);
             // 
+            // secondaryMemPicture
+            // 
+            this.secondaryMemPicture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.secondaryMemPicture.Location = new System.Drawing.Point(0, 0);
+            this.secondaryMemPicture.Name = "secondaryMemPicture";
+            this.secondaryMemPicture.Size = new System.Drawing.Size(246, 392);
+            this.secondaryMemPicture.TabIndex = 23;
+            this.secondaryMemPicture.TabStop = false;
+            // 
+            // rootLayout
+            // 
+            this.rootLayout.ColumnCount = 3;
+            this.rootLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.rootLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rootLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rootLayout.Controls.Add(this.secondaryMemScrollView, 2, 0);
+            this.rootLayout.Controls.Add(this.primaryMemScrollView, 1, 0);
+            this.rootLayout.Controls.Add(this.controlsLayout, 0, 0);
+            this.rootLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rootLayout.Location = new System.Drawing.Point(0, 0);
+            this.rootLayout.Name = "rootLayout";
+            this.rootLayout.RowCount = 1;
+            this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rootLayout.Size = new System.Drawing.Size(754, 431);
+            this.rootLayout.TabIndex = 24;
+            // 
+            // settingsPanel
+            // 
+            this.settingsPanel.AutoSize = true;
+            this.settingsPanel.Controls.Add(this.settingsLabel);
+            this.settingsPanel.Controls.Add(this.pageSizeLabel);
+            this.settingsPanel.Controls.Add(this.pageSize);
+            this.settingsPanel.Controls.Add(this.framesCount);
+            this.settingsPanel.Controls.Add(this.memorySize);
+            this.settingsPanel.Controls.Add(this.framesCountLabel);
+            this.settingsPanel.Controls.Add(this.memorySizeLabel);
+            this.settingsPanel.Controls.Add(this.updateSettingsButton);
+            this.settingsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.settingsPanel.Location = new System.Drawing.Point(3, 3);
+            this.settingsPanel.Name = "settingsPanel";
+            this.settingsPanel.Size = new System.Drawing.Size(238, 132);
+            this.settingsPanel.TabIndex = 25;
+            // 
+            // addPagePanel
+            // 
+            this.addPagePanel.AutoSize = true;
+            this.addPagePanel.Controls.Add(this.addPageButton);
+            this.addPagePanel.Controls.Add(this.addPageLabel);
+            this.addPagePanel.Controls.Add(this.newPageInPrimary);
+            this.addPagePanel.Controls.Add(this.newPageAddr);
+            this.addPagePanel.Controls.Add(this.newPageFrame);
+            this.addPagePanel.Controls.Add(this.newPageAddrLabel);
+            this.addPagePanel.Controls.Add(this.newPageFrameLabel);
+            this.addPagePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addPagePanel.Location = new System.Drawing.Point(3, 141);
+            this.addPagePanel.Name = "addPagePanel";
+            this.addPagePanel.Size = new System.Drawing.Size(238, 132);
+            this.addPagePanel.TabIndex = 26;
+            // 
+            // translatePanel
+            // 
+            this.translatePanel.AutoSize = true;
+            this.translatePanel.Controls.Add(this.translateAddressButton);
+            this.translatePanel.Controls.Add(this.addresTranslationLabel);
+            this.translatePanel.Controls.Add(this.translatePageIndexLabel);
+            this.translatePanel.Controls.Add(this.translatePageOffsetLabel);
+            this.translatePanel.Controls.Add(this.translatePageOffset);
+            this.translatePanel.Controls.Add(this.translatePageIndex);
+            this.translatePanel.Controls.Add(this.translateRealAddressLabel);
+            this.translatePanel.Controls.Add(this.translateRealAddress);
+            this.translatePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.translatePanel.Location = new System.Drawing.Point(3, 279);
+            this.translatePanel.Name = "translatePanel";
+            this.translatePanel.Size = new System.Drawing.Size(238, 146);
+            this.translatePanel.TabIndex = 27;
+            // 
+            // settingsLabel
+            // 
+            this.settingsLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.settingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsLabel.Location = new System.Drawing.Point(0, 0);
+            this.settingsLabel.Name = "settingsLabel";
+            this.settingsLabel.Size = new System.Drawing.Size(238, 30);
+            this.settingsLabel.TabIndex = 16;
+            this.settingsLabel.Text = "Параметры";
+            this.settingsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // controlsLayout
+            // 
+            this.controlsLayout.ColumnCount = 1;
+            this.controlsLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.controlsLayout.Controls.Add(this.settingsPanel, 0, 0);
+            this.controlsLayout.Controls.Add(this.translatePanel, 0, 2);
+            this.controlsLayout.Controls.Add(this.addPagePanel, 0, 1);
+            this.controlsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlsLayout.Location = new System.Drawing.Point(3, 3);
+            this.controlsLayout.Name = "controlsLayout";
+            this.controlsLayout.RowCount = 3;
+            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.controlsLayout.Size = new System.Drawing.Size(244, 425);
+            this.controlsLayout.TabIndex = 28;
+            // 
+            // primaryMemScrollView
+            // 
+            this.primaryMemScrollView.AutoScroll = true;
+            this.primaryMemScrollView.Controls.Add(this.primaryMemPicture);
+            this.primaryMemScrollView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.primaryMemScrollView.Location = new System.Drawing.Point(253, 3);
+            this.primaryMemScrollView.Name = "primaryMemScrollView";
+            this.primaryMemScrollView.Size = new System.Drawing.Size(246, 425);
+            this.primaryMemScrollView.TabIndex = 25;
+            // 
+            // secondaryMemScrollView
+            // 
+            this.secondaryMemScrollView.AutoScroll = true;
+            this.secondaryMemScrollView.Controls.Add(this.secondaryMemPicture);
+            this.secondaryMemScrollView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.secondaryMemScrollView.Location = new System.Drawing.Point(505, 3);
+            this.secondaryMemScrollView.Name = "secondaryMemScrollView";
+            this.secondaryMemScrollView.Size = new System.Drawing.Size(246, 425);
+            this.secondaryMemScrollView.TabIndex = 25;
+            // 
             // PagedMemoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 407);
-            this.Controls.Add(this.translateAddressButton);
-            this.Controls.Add(this.translateRealAddressLabel);
-            this.Controls.Add(this.translateRealAddress);
-            this.Controls.Add(this.translatePageIndex);
-            this.Controls.Add(this.translatePageOffset);
-            this.Controls.Add(this.translatePageOffsetLabel);
-            this.Controls.Add(this.translatePageIndexLabel);
-            this.Controls.Add(this.updateSettingsButton);
-            this.Controls.Add(this.addresTranslationLabel);
-            this.Controls.Add(this.addPageButton);
-            this.Controls.Add(this.newPageFrameLabel);
-            this.Controls.Add(this.newPageAddrLabel);
-            this.Controls.Add(this.newPageFrame);
-            this.Controls.Add(this.newPageAddr);
-            this.Controls.Add(this.newPageInPrimary);
-            this.Controls.Add(this.addPageLabel);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.memorySizeLabel);
-            this.Controls.Add(this.framesCountLabel);
-            this.Controls.Add(this.pageSizeLabel);
-            this.Controls.Add(this.memorySize);
-            this.Controls.Add(this.framesCount);
-            this.Controls.Add(this.pageSize);
+            this.ClientSize = new System.Drawing.Size(754, 431);
+            this.Controls.Add(this.rootLayout);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(770, 470);
             this.Name = "PagedMemoryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PagedMemory";
             ((System.ComponentModel.ISupportInitialize)(this.pageSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.framesCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memorySize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.primaryMemPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageAddr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPageFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.translatePageOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.translatePageIndex)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.translateRealAddress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondaryMemPicture)).EndInit();
+            this.rootLayout.ResumeLayout(false);
+            this.settingsPanel.ResumeLayout(false);
+            this.settingsPanel.PerformLayout();
+            this.addPagePanel.ResumeLayout(false);
+            this.addPagePanel.PerformLayout();
+            this.translatePanel.ResumeLayout(false);
+            this.translatePanel.PerformLayout();
+            this.controlsLayout.ResumeLayout(false);
+            this.controlsLayout.PerformLayout();
+            this.primaryMemScrollView.ResumeLayout(false);
+            this.secondaryMemScrollView.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -379,7 +526,7 @@
         private System.Windows.Forms.Label pageSizeLabel;
         private System.Windows.Forms.Label framesCountLabel;
         private System.Windows.Forms.Label memorySizeLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox primaryMemPicture;
         private System.Windows.Forms.Label addPageLabel;
         private System.Windows.Forms.CheckBox newPageInPrimary;
         private System.Windows.Forms.NumericUpDown newPageAddr;
@@ -396,5 +543,14 @@
         private System.Windows.Forms.NumericUpDown translateRealAddress;
         private System.Windows.Forms.Label translateRealAddressLabel;
         private System.Windows.Forms.Button translateAddressButton;
+        private System.Windows.Forms.PictureBox secondaryMemPicture;
+        private System.Windows.Forms.TableLayoutPanel rootLayout;
+        private System.Windows.Forms.Panel primaryMemScrollView;
+        private System.Windows.Forms.TableLayoutPanel controlsLayout;
+        private System.Windows.Forms.Panel settingsPanel;
+        private System.Windows.Forms.Label settingsLabel;
+        private System.Windows.Forms.Panel translatePanel;
+        private System.Windows.Forms.Panel addPagePanel;
+        private System.Windows.Forms.Panel secondaryMemScrollView;
     }
 }

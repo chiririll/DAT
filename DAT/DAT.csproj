@@ -48,18 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="View\PagedMemoryView.cs" />
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MemoryViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MemoryViewForm.Designer.cs">
-      <DependentUpon>MemoryViewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\PagedMemoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,15 +57,6 @@
     <Compile Include="View\Grid.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\MainForm.en-US.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MemoryViewForm.resx">
-      <DependentUpon>MemoryViewForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PagedMemoryForm.resx">
       <DependentUpon>PagedMemoryForm.cs</DependentUpon>
     </EmbeddedResource>
