@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DAT.Model.Paged;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,6 +11,7 @@ namespace DAT.View
     {
         private const int bottomOffset = 5;
 
+        private Font font;
         private Pen framePen;
         private Pen gridPen;
         private Brush pageBrush;
@@ -21,8 +25,10 @@ namespace DAT.View
             PictureBox container,
             Size cellSize,
             int cellsCount,
+            Font font,
             Pen gridPen = null,
-            Pen framePen = null)
+            Pen framePen = null,
+            Brush pageBrush = null)
         {
             this.CellsCount = cellsCount;
 
@@ -30,8 +36,10 @@ namespace DAT.View
             this.offset = new Point(0, 0);
             this.cellSize = cellSize;
 
+            this.font = font;
             this.framePen = framePen ?? Palette.FramePen;
             this.gridPen = gridPen ?? Palette.GridPen;
+            this.pageBrush = pageBrush ?? Palette.PageBrush;
         }
 
         public int CellsCount { get; private set; }
@@ -50,7 +58,8 @@ namespace DAT.View
             CellsInRow = (container.Size.Width - offset.X) / cellSize.Width;
             RowsCount = (int)Math.Floor((float)CellsCount / CellsInRow);
 
-            var actualHeight = 2 * offset.Y + (RowsCount + 1) * cellSize.Height + bottomOffset;
+            var actualRows = RowsCount + (CellsCount % CellsInRow > 0 ? 1 : 0);
+            var actualHeight = 2 * offset.Y + actualRows * cellSize.Height + bottomOffset;
             container.Height = actualHeight;
         }
 
@@ -74,10 +83,14 @@ namespace DAT.View
             return idx;
         }
 
-        public void Draw(Graphics gfx)
+        public void Draw(Graphics gfx, IEnumerable<Page> framePages = null, IEnumerable<Page> memoryPages = null, int pageSize = default)
         {
             RecalculateSize();
+            
             DrawGrid(gfx);
+
+            if (framePages != null) DrawPagesInFrames(gfx, framePages);
+            if (memoryPages != null) DrawPagesInMemory(gfx, memoryPages, pageSize);
         }
 
         private void DrawGrid(Graphics gfx)
@@ -113,6 +126,32 @@ namespace DAT.View
                 }
 
                 gfx.DrawLine(gridPen, offset.X + rectSize.Width, yMin, offset.X + rectSize.Width, yMax);
+            }
+        }
+
+        private void DrawPagesInFrames(Graphics gfx, IEnumerable<Page> pages)
+        {
+            foreach (var page in pages)
+            {
+                if (page == null || !page.InPrimary) continue;
+
+                var pos = GetCellPosition(page.Frame);
+                gfx.DrawRectangle(framePen, pos, cellSize);
+                gfx.DrawString(page.Id.ToString(), font, Brushes.Black, pos);
+            }
+        }
+
+        private void DrawPagesInMemory(Graphics gfx, IEnumerable<Page> pages, int pageSize)
+        {
+            foreach (var page in pages)
+            {
+                if (page == null || page.InPrimary) continue;
+
+                for (int i = page.Address; i < page.Address + pageSize; i++)
+                {
+                    gfx.FillRectangle(pageBrush, GetCellPosition(i), cellSize);
+                }
+                gfx.DrawString(page.Id.ToString(), font, Brushes.White, GetCellPosition(page.Address));
             }
         }
     }

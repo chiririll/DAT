@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\GraphicsExtensions.cs" />
     <Compile Include="View\PagedMemoryView.cs" />
     <Compile Include="Forms\PagedMemoryForm.cs">
       <SubType>Form</SubType>

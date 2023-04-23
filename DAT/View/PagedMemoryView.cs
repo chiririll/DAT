@@ -15,19 +15,15 @@ namespace DAT.View
         private Grid primaryGrid;
         private Grid secondaryGrid;
 
-        private Font font;
-
         public PagedMemoryView(PagedMemory memory, PictureBox primaryContainer, PictureBox secondaryContainer, Font font)
         {
             this.memory = memory;
-
-            this.font = font;
             
             this.primaryContainer = primaryContainer;
             this.secondaryContainer = secondaryContainer;
 
-            primaryGrid = new Grid(primaryContainer, new Size(40, 40), memory.FramesCount);
-            secondaryGrid = new Grid(secondaryContainer, new Size(15, 20), memory.MemorySize);
+            primaryGrid = new Grid(primaryContainer, new Size(40, 40), memory.FramesCount, font);
+            secondaryGrid = new Grid(secondaryContainer, new Size(15, 20), memory.MemorySize, font);
 
             memory.MemoryUpdated += MemoryUpdateHandler;
             memory.SettingsUpdated += MemorySettingsUpdateHandler;
@@ -50,18 +46,13 @@ namespace DAT.View
         public void DrawPrimary(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(primaryContainer.BackColor);
-            primaryGrid.Draw(e.Graphics);
-            
-            foreach (var page in memory.Primary)
-            {
-                DrawPage(e.Graphics, page);
-            }
+            primaryGrid.Draw(e.Graphics, framePages: memory.Primary);
         }
 
         public void DrawSecondary(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(secondaryContainer.BackColor);
-            secondaryGrid.Draw(e.Graphics);
+            secondaryGrid.Draw(e.Graphics, memoryPages: memory.Secondary, pageSize: memory.PageSize);
         }
 
         private void MemorySettingsUpdateHandler()
@@ -74,16 +65,6 @@ namespace DAT.View
         {
             primaryContainer.Invalidate();
             secondaryContainer.Invalidate();
-        }
-
-        private void DrawPage(Graphics gfx, Page page)
-        {
-            if (page == null) return;
-
-            var pos = primaryGrid.GetCellPosition(page.Frame);
-
-            gfx.DrawRectangle(Palette.FramePen, new Rectangle(pos, new Size(40, 40)));
-            gfx.DrawString(page.Id.ToString(), font, Brushes.Black, pos);
         }
 
         #region Resize

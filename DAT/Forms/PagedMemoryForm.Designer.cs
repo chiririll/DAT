@@ -53,13 +53,13 @@
             this.translateAddressButton = new System.Windows.Forms.Button();
             this.secondaryMemPicture = new System.Windows.Forms.PictureBox();
             this.rootLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.settingsPanel = new System.Windows.Forms.Panel();
-            this.addPagePanel = new System.Windows.Forms.Panel();
-            this.translatePanel = new System.Windows.Forms.Panel();
-            this.settingsLabel = new System.Windows.Forms.Label();
-            this.controlsLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.primaryMemScrollView = new System.Windows.Forms.Panel();
             this.secondaryMemScrollView = new System.Windows.Forms.Panel();
+            this.primaryMemScrollView = new System.Windows.Forms.Panel();
+            this.controlsLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsPanel = new System.Windows.Forms.Panel();
+            this.settingsLabel = new System.Windows.Forms.Label();
+            this.translatePanel = new System.Windows.Forms.Panel();
+            this.addPagePanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pageSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.framesCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memorySize)).BeginInit();
@@ -71,12 +71,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.translateRealAddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondaryMemPicture)).BeginInit();
             this.rootLayout.SuspendLayout();
-            this.settingsPanel.SuspendLayout();
-            this.addPagePanel.SuspendLayout();
-            this.translatePanel.SuspendLayout();
-            this.controlsLayout.SuspendLayout();
-            this.primaryMemScrollView.SuspendLayout();
             this.secondaryMemScrollView.SuspendLayout();
+            this.primaryMemScrollView.SuspendLayout();
+            this.controlsLayout.SuspendLayout();
+            this.settingsPanel.SuspendLayout();
+            this.translatePanel.SuspendLayout();
+            this.addPagePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pageSize
@@ -184,7 +184,7 @@
             this.primaryMemPicture.Location = new System.Drawing.Point(0, 0);
             this.primaryMemPicture.Margin = new System.Windows.Forms.Padding(2);
             this.primaryMemPicture.Name = "primaryMemPicture";
-            this.primaryMemPicture.Size = new System.Drawing.Size(246, 392);
+            this.primaryMemPicture.Size = new System.Drawing.Size(261, 392);
             this.primaryMemPicture.TabIndex = 6;
             this.primaryMemPicture.TabStop = false;
             // 
@@ -362,7 +362,7 @@
             this.secondaryMemPicture.Dock = System.Windows.Forms.DockStyle.Top;
             this.secondaryMemPicture.Location = new System.Drawing.Point(0, 0);
             this.secondaryMemPicture.Name = "secondaryMemPicture";
-            this.secondaryMemPicture.Size = new System.Drawing.Size(246, 392);
+            this.secondaryMemPicture.Size = new System.Drawing.Size(261, 392);
             this.secondaryMemPicture.TabIndex = 23;
             this.secondaryMemPicture.TabStop = false;
             // 
@@ -380,8 +380,45 @@
             this.rootLayout.Name = "rootLayout";
             this.rootLayout.RowCount = 1;
             this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.rootLayout.Size = new System.Drawing.Size(754, 431);
+            this.rootLayout.Size = new System.Drawing.Size(784, 511);
             this.rootLayout.TabIndex = 24;
+            // 
+            // secondaryMemScrollView
+            // 
+            this.secondaryMemScrollView.AutoScroll = true;
+            this.secondaryMemScrollView.Controls.Add(this.secondaryMemPicture);
+            this.secondaryMemScrollView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.secondaryMemScrollView.Location = new System.Drawing.Point(520, 3);
+            this.secondaryMemScrollView.Name = "secondaryMemScrollView";
+            this.secondaryMemScrollView.Size = new System.Drawing.Size(261, 505);
+            this.secondaryMemScrollView.TabIndex = 25;
+            // 
+            // primaryMemScrollView
+            // 
+            this.primaryMemScrollView.AutoScroll = true;
+            this.primaryMemScrollView.Controls.Add(this.primaryMemPicture);
+            this.primaryMemScrollView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.primaryMemScrollView.Location = new System.Drawing.Point(253, 3);
+            this.primaryMemScrollView.Name = "primaryMemScrollView";
+            this.primaryMemScrollView.Size = new System.Drawing.Size(261, 505);
+            this.primaryMemScrollView.TabIndex = 25;
+            // 
+            // controlsLayout
+            // 
+            this.controlsLayout.ColumnCount = 1;
+            this.controlsLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.controlsLayout.Controls.Add(this.settingsPanel, 0, 0);
+            this.controlsLayout.Controls.Add(this.translatePanel, 0, 2);
+            this.controlsLayout.Controls.Add(this.addPagePanel, 0, 1);
+            this.controlsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlsLayout.Location = new System.Drawing.Point(3, 3);
+            this.controlsLayout.Name = "controlsLayout";
+            this.controlsLayout.RowCount = 3;
+            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.controlsLayout.Size = new System.Drawing.Size(244, 505);
+            this.controlsLayout.TabIndex = 28;
             // 
             // settingsPanel
             // 
@@ -400,21 +437,16 @@
             this.settingsPanel.Size = new System.Drawing.Size(238, 132);
             this.settingsPanel.TabIndex = 25;
             // 
-            // addPagePanel
+            // settingsLabel
             // 
-            this.addPagePanel.AutoSize = true;
-            this.addPagePanel.Controls.Add(this.addPageButton);
-            this.addPagePanel.Controls.Add(this.addPageLabel);
-            this.addPagePanel.Controls.Add(this.newPageInPrimary);
-            this.addPagePanel.Controls.Add(this.newPageAddr);
-            this.addPagePanel.Controls.Add(this.newPageFrame);
-            this.addPagePanel.Controls.Add(this.newPageAddrLabel);
-            this.addPagePanel.Controls.Add(this.newPageFrameLabel);
-            this.addPagePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addPagePanel.Location = new System.Drawing.Point(3, 141);
-            this.addPagePanel.Name = "addPagePanel";
-            this.addPagePanel.Size = new System.Drawing.Size(238, 132);
-            this.addPagePanel.TabIndex = 26;
+            this.settingsLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.settingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsLabel.Location = new System.Drawing.Point(0, 0);
+            this.settingsLabel.Name = "settingsLabel";
+            this.settingsLabel.Size = new System.Drawing.Size(238, 30);
+            this.settingsLabel.TabIndex = 16;
+            this.settingsLabel.Text = "Параметры";
+            this.settingsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // translatePanel
             // 
@@ -433,62 +465,30 @@
             this.translatePanel.Size = new System.Drawing.Size(238, 146);
             this.translatePanel.TabIndex = 27;
             // 
-            // settingsLabel
+            // addPagePanel
             // 
-            this.settingsLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.settingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsLabel.Location = new System.Drawing.Point(0, 0);
-            this.settingsLabel.Name = "settingsLabel";
-            this.settingsLabel.Size = new System.Drawing.Size(238, 30);
-            this.settingsLabel.TabIndex = 16;
-            this.settingsLabel.Text = "Параметры";
-            this.settingsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // controlsLayout
-            // 
-            this.controlsLayout.ColumnCount = 1;
-            this.controlsLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.controlsLayout.Controls.Add(this.settingsPanel, 0, 0);
-            this.controlsLayout.Controls.Add(this.translatePanel, 0, 2);
-            this.controlsLayout.Controls.Add(this.addPagePanel, 0, 1);
-            this.controlsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlsLayout.Location = new System.Drawing.Point(3, 3);
-            this.controlsLayout.Name = "controlsLayout";
-            this.controlsLayout.RowCount = 3;
-            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.controlsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.controlsLayout.Size = new System.Drawing.Size(244, 425);
-            this.controlsLayout.TabIndex = 28;
-            // 
-            // primaryMemScrollView
-            // 
-            this.primaryMemScrollView.AutoScroll = true;
-            this.primaryMemScrollView.Controls.Add(this.primaryMemPicture);
-            this.primaryMemScrollView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.primaryMemScrollView.Location = new System.Drawing.Point(253, 3);
-            this.primaryMemScrollView.Name = "primaryMemScrollView";
-            this.primaryMemScrollView.Size = new System.Drawing.Size(246, 425);
-            this.primaryMemScrollView.TabIndex = 25;
-            // 
-            // secondaryMemScrollView
-            // 
-            this.secondaryMemScrollView.AutoScroll = true;
-            this.secondaryMemScrollView.Controls.Add(this.secondaryMemPicture);
-            this.secondaryMemScrollView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.secondaryMemScrollView.Location = new System.Drawing.Point(505, 3);
-            this.secondaryMemScrollView.Name = "secondaryMemScrollView";
-            this.secondaryMemScrollView.Size = new System.Drawing.Size(246, 425);
-            this.secondaryMemScrollView.TabIndex = 25;
+            this.addPagePanel.AutoSize = true;
+            this.addPagePanel.Controls.Add(this.addPageButton);
+            this.addPagePanel.Controls.Add(this.addPageLabel);
+            this.addPagePanel.Controls.Add(this.newPageInPrimary);
+            this.addPagePanel.Controls.Add(this.newPageAddr);
+            this.addPagePanel.Controls.Add(this.newPageFrame);
+            this.addPagePanel.Controls.Add(this.newPageAddrLabel);
+            this.addPagePanel.Controls.Add(this.newPageFrameLabel);
+            this.addPagePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addPagePanel.Location = new System.Drawing.Point(3, 141);
+            this.addPagePanel.Name = "addPagePanel";
+            this.addPagePanel.Size = new System.Drawing.Size(238, 132);
+            this.addPagePanel.TabIndex = 26;
             // 
             // PagedMemoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 431);
+            this.ClientSize = new System.Drawing.Size(784, 511);
             this.Controls.Add(this.rootLayout);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(770, 470);
+            this.MinimumSize = new System.Drawing.Size(800, 470);
             this.Name = "PagedMemoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PagedMemory";
@@ -503,16 +503,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.translateRealAddress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondaryMemPicture)).EndInit();
             this.rootLayout.ResumeLayout(false);
-            this.settingsPanel.ResumeLayout(false);
-            this.settingsPanel.PerformLayout();
-            this.addPagePanel.ResumeLayout(false);
-            this.addPagePanel.PerformLayout();
-            this.translatePanel.ResumeLayout(false);
-            this.translatePanel.PerformLayout();
+            this.secondaryMemScrollView.ResumeLayout(false);
+            this.primaryMemScrollView.ResumeLayout(false);
             this.controlsLayout.ResumeLayout(false);
             this.controlsLayout.PerformLayout();
-            this.primaryMemScrollView.ResumeLayout(false);
-            this.secondaryMemScrollView.ResumeLayout(false);
+            this.settingsPanel.ResumeLayout(false);
+            this.settingsPanel.PerformLayout();
+            this.translatePanel.ResumeLayout(false);
+            this.translatePanel.PerformLayout();
+            this.addPagePanel.ResumeLayout(false);
+            this.addPagePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

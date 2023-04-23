@@ -1,16 +1,11 @@
 ﻿using System.Windows.Forms;
 using DAT.View;
 using DAT.Model.Paged;
-using System.Drawing;
 
 namespace DAT.Forms
 {
     public partial class PagedMemoryForm : Form
     {
-        public const int defaultPageSize = 32;
-        public const int defaultFramesCount = 64;
-        public const int defaultMemorySize = 512 * 1024;
-
         private PagedMemory memory;
         private PagedMemoryView memView;
 
@@ -18,7 +13,7 @@ namespace DAT.Forms
         {
             InitializeComponent();
 
-            memory = new PagedMemory(defaultPageSize, defaultFramesCount, defaultMemorySize);
+            memory = new PagedMemory((int)pageSize.Value, (int)framesCount.Value, (int)memorySize.Value);
             memView = new PagedMemoryView(memory, primaryMemPicture, secondaryMemPicture, this.Font);
         }
 
