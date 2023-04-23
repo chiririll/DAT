@@ -16,17 +16,10 @@ namespace DAT.Forms
 
         public PagedMemoryForm()
         {
-            memory = new PagedMemory(defaultPageSize, defaultFramesCount, defaultMemorySize);
-            memView = new PagedMemoryView(memory, this.Font);
-
             InitializeComponent();
-        }
 
-        private void DrawMemory(object sender, PaintEventArgs e)
-        {
-            e.Graphics.Clear(Color.White);
-
-            memView.Draw(e.Graphics);
+            memory = new PagedMemory(defaultPageSize, defaultFramesCount, defaultMemorySize);
+            memView = new PagedMemoryView(memory, primaryMemPicture, secondaryMemPicture, this.Font);
         }
 
         private void AddPage(object sender, System.EventArgs e)
@@ -47,10 +40,7 @@ namespace DAT.Forms
 
         private void UpdateSettings(object sender, System.EventArgs e)
         {
-            memory = new PagedMemory((int)pageSize.Value, (int)framesCount.Value, (int)memorySize.Value);
-            memView = new PagedMemoryView(memory, this.Font);
-
-            primaryMemPicture.Invalidate();
+            memory.UpdateSettings((int)pageSize.Value, (int)framesCount.Value, (int)memorySize.Value);
         }
 
         private void TranslateAddress(object sender, System.EventArgs e)

@@ -6,22 +6,33 @@ namespace DAT.Model.Paged
 {
     public class PagedMemory
     {
-        public readonly int pageSize;
-        public readonly int memorySize;
+        private int pageSize;
+        private int memorySize;
 
-        private readonly List<Page> pages = new List<Page>();
-        private readonly Page[] primary;
+        private Page[] primary;
         private readonly List<Page> secondary = new List<Page>();
+        private readonly List<Page> pages = new List<Page>();
 
         private readonly Random rand;
+        public PagedMemory(int pageSize, int framesCount, int memorySize)
+        {
+            rand = new Random();
+
+            UpdateSettings(pageSize, framesCount, memorySize);
+        }
 
         public IEnumerable<Page> Pages => pages;
         public IEnumerable<Page> Primary => primary;
         public IEnumerable<Page> Secondary => secondary;
 
         public int FramesCount => primary.Length;
+        public int MemorySize => memorySize;
+        public int PageSize => pageSize;
 
-        public PagedMemory(int pageSize, int framesCount, int memorySize)
+        public event Action MemoryUpdated;
+        public event Action SettingsUpdated;
+
+        public void UpdateSettings(int pageSize, int framesCount, int memorySize)
         {
             if (pageSize <= 0)
             {
@@ -36,12 +47,20 @@ namespace DAT.Model.Paged
                 throw new ArgumentOutOfRangeException(nameof(framesCount), "below of equal zero!");
             }
 
+            if (this.pageSize == pageSize && this.FramesCount == framesCount && this.memorySize == memorySize)
+            {
+                return;
+            }
+
             this.pageSize = pageSize;
             this.memorySize = memorySize;
 
             primary = new Page[framesCount];
+            secondary.Clear();
+            pages.Clear();
 
-            rand = new Random();
+            SettingsUpdated?.Invoke();
+            MemoryUpdated?.Invoke();
         }
 
         public void AddPage(Page page)
@@ -61,6 +80,7 @@ namespace DAT.Model.Paged
             }
 
             pages.Add(page);
+            MemoryUpdated?.Invoke();
         }
 
         public void UpdatePage(Id id)
@@ -73,6 +93,7 @@ namespace DAT.Model.Paged
             }
 
             UpdatePage(index);
+            MemoryUpdated?.Invoke();
         }
 
         public void RemovePage(Page page)
@@ -92,6 +113,7 @@ namespace DAT.Model.Paged
             }
 
             pages.Remove(page);
+            MemoryUpdated?.Invoke();
         }
 
         public int TranslateAddress(int pageIndex, int pageDelta)
@@ -129,6 +151,7 @@ namespace DAT.Model.Paged
             // Меняем местами страницы из первичной и вторичной памяти
             SwapPages(primary[randFrame], page);
 
+            MemoryUpdated?.Invoke();
             return page.Frame * (int)pageSize + (int)pageDelta;
         }
 

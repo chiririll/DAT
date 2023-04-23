@@ -187,7 +187,6 @@
             this.primaryMemPicture.Size = new System.Drawing.Size(246, 392);
             this.primaryMemPicture.TabIndex = 6;
             this.primaryMemPicture.TabStop = false;
-            this.primaryMemPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawMemory);
             // 
             // addPageLabel
             // 
