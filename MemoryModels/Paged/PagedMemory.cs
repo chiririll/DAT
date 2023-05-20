@@ -56,6 +56,7 @@ namespace DAT.Model.Paged
             this.pageSize = pageSize;
             this.memorySize = memorySize;
 
+            IdUtils.Reset();
             primary = new Page[framesCount];
             secondary.Clear();
             pages.Clear();
@@ -116,7 +117,7 @@ namespace DAT.Model.Paged
             MemoryUpdated?.Invoke();
         }
 
-        public int TranslateAddress(int pageIndex, int pageDelta)
+        public int TranslateAddress(int pageIndex, int pageDelta, out Page page)
         {
             if (pageDelta < 0 || pageDelta >= pageSize)
             {
@@ -124,7 +125,7 @@ namespace DAT.Model.Paged
             }
 
             // Ищем страницу
-            var page = pages.Find(p => p.Id == pageIndex);
+            page = pages.Find(p => p.Id == pageIndex);
             if (page == null)
             {
                 throw new Exceptions.PageNotExistsException();

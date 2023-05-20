@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
 using DAT.View;
 using DAT.Model.Paged;
-using System.Linq;
 
 namespace DAT.Forms
 {
@@ -47,14 +46,14 @@ namespace DAT.Forms
         {
             try
             {
-                translateRealAddress.Value = memory.TranslateAddress((int)translatePageIndex.Value, (int)translatePageOffset.Value);
+                translateRealAddress.Value = memory.TranslateAddress((int)translatePageIndex.Value, (int)translatePageOffset.Value, out var page);
 
                 primaryMemPicture.Invalidate();
                 
                 if (pageForm.IsDisposed)
                     pageForm = new PageForm();
-
-                pageForm.SetData(memory.Primary.ElementAt((int)translatePageIndex.Value), memory.PageSize, (int)translatePageOffset.Value);
+                
+                pageForm.SetData(page, memory.PageSize, (int)translatePageOffset.Value);
                 pageForm.ShowDialog();
             }
             catch (System.Exception ex)
